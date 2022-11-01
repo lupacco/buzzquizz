@@ -8,6 +8,10 @@ body{
     font-family: 'Roboto', sans-serif;
     align-items: center;
     background-color: #F1F1F1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
 }
 header{
     background-color: #EC362D;
@@ -20,5 +24,10 @@ header{
     color: #FFFFFF;
 }
 .createQuizz{
-
+    width: 1051px;
+    border: 1px dashed #D5D5D5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
 }
