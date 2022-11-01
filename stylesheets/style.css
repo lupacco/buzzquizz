@@ -23,11 +23,52 @@ header{
     padding-top: 16px;
     color: #FFFFFF;
 }
+main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    border: solid 1px black;
+    width: 80%;
+}
 .createQuizz{
-    width: 1051px;
+    width: 100%;
+    margin: 64px 0;
     border: 1px dashed #D5D5D5;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
+}
+.createQuizz p {
+    text-align: center;
+    color: #B9B9B9;
+    font-size: 20px;
+    width: 250px;
+    margin-top: 32px;
+}
+  
+.createQuizz button{
+    color: #EC362D;
+    border: 1px dashed #EC362D;
+    border-color: #EC362D;
+    background: none;
+    width: 151px;
+    height: 40px;
+    border-radius: 24px;
+    margin: 64px 0 32px;
+}
+.createQuizz button:hover{
+    cursor: pointer;
+}
+section{
+    background-color: blue;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-evenly;
+    margin: 0;
+}
+.quizz{
+    width: 340px;
 }
