@@ -22,6 +22,7 @@ header{
     text-align: center;
     padding-top: 16px;
     color: #FFFFFF;
+    box-shadow: 0 8px 4px #D1D1D1;
 }
 main{
     display: flex;
