@@ -28,17 +28,17 @@ main{
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
-    border: solid 1px black;
     width: 80%;
+    margin: 64px 0;
 }
 .createQuizz{
     width: 100%;
-    margin: 64px 0;
     border: 1px dashed #D5D5D5;
+    border-radius: 8px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-around;
+    margin-bottom: 6em;
 }
 .createQuizz p {
     text-align: center;
@@ -56,19 +56,30 @@ main{
     width: 151px;
     height: 40px;
     border-radius: 24px;
-    margin: 64px 0 32px;
+    margin: 32px;
 }
 .createQuizz button:hover{
     cursor: pointer;
 }
+h2{
+    font-weight: 700;
+}
 section{
-    background-color: blue;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: space-between;
     margin: 0;
 }
 .quizz{
     width: 340px;
+    margin: 16px 0;
+    position: relative;
+}
+.quizz p {
+    position: absolute;
+    bottom: 8px;
+    left: 8px;
+    color: #FFFFFF;
+    text-align: center;
 }
