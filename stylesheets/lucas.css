@@ -62,17 +62,35 @@ main{
 .createQuizz button:hover{
     cursor: pointer;
 }
-h2{
-    font-weight: 700;
-}
 section{
+    margin-bottom: 64px;
+}
+.quizzes{
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
     margin: 0;
-    background-color: aqua;
 }
+h2{
+    font-weight: 700;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+h2 button{
+    border: none;
+    background-color: none;
+}
+h2 button:hover{
+    cursor: pointer;
+}
+ion-icon{
+    font-size: 24px;
+    color: #EC362D;
+}
+
+
 .quizz{
     width: 340px;
     margin: 16px 0;
