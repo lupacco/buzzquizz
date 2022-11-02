@@ -71,16 +71,22 @@ section{
     align-items: center;
     justify-content: space-between;
     margin: 0;
+    background-color: aqua;
 }
 .quizz{
     width: 340px;
     margin: 16px 0;
     position: relative;
+    background-color: antiquewhite;
 }
 .quizz p {
     position: absolute;
-    bottom: 8px;
+    bottom: 12px;
     left: 8px;
     color: #FFFFFF;
     text-align: center;
+}
+
+.hide{
+    display:none;
 }
