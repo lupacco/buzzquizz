@@ -21,6 +21,7 @@ function renderQuizzes(quizzes){
     quizzes.forEach(quiz => {
         allQuizzes.innerHTML += `
         <div class="quizz">
+            <div class="gradient"></div>
             <img src="${quiz.image}" alt="">
             <p>${quiz.title}</p>
         </div>
