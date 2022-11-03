@@ -35,7 +35,7 @@ function createQuestions() {
   for(let i = 0; i < inputNumberOfQuestions; i++) {
     boxQuestions.innerHTML += `
       <div class="question">
-        <div class="teste">
+        <div class="header">
             <p>Pergunta ${i + 1}</p>
             <ion-icon onclick="expandQuestion(this)" name="create-outline"></ion-icon>
         </div>

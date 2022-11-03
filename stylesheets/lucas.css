@@ -1,5 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Righteous&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap%27');
 
+:root{
+    --red: #EC362D;
+    --gray-text:#B9B9B9;
+    --gray:#D5D5D5;
+}
+
 *{
     box-sizing: border-box;
     font-size: 16px;
@@ -14,7 +20,7 @@ body{
     justify-content: space-between;
 }
 header{
-    background-color: #EC362D;
+    background-color: var(--red);
     font-weight: 700;
     font-size: 37px;
     width: 100%;
@@ -34,7 +40,7 @@ main{
 }
 .createQuizz{
     width: 100%;
-    border: 1px dashed #D5D5D5;
+    border: 1px dashed var(--gray);
     border-radius: 8px;
     display: flex;
     flex-direction: column;
@@ -43,16 +49,16 @@ main{
 }
 .createQuizz p {
     text-align: center;
-    color: #B9B9B9;
+    color: var(--gray-text);
     font-size: 20px;
     width: 250px;
     margin-top: 32px;
 }
   
 .createQuizz button{
-    color: #EC362D;
-    border: 1px dashed #EC362D;
-    border-color: #EC362D;
+    color: var(--red);
+    border: 1px dashed var(--red);
+    border-color: var(--red);
     background: none;
     width: 151px;
     height: 40px;
@@ -87,15 +93,31 @@ h2 button:hover{
 }
 ion-icon{
     font-size: 24px;
-    color: #EC362D;
+    color: var(--red);
 }
 
 
 .quizz{
     width: 340px;
+    height: 181px;
     margin: 16px 0;
     position: relative;
-    background-color: antiquewhite;
+}
+.quizz:hover{
+    cursor: pointer;
+}
+.quizz .gradient{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 100%);
+    border-radius: 8px;
+}
+.quizz img{
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
 }
 .quizz p {
     position: absolute;

@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="stylesheets/reset.css">
     <link rel="stylesheet" href="stylesheets/lucas.css">
     <link rel="stylesheet" href="stylesheets/fabio.css">
+    <link rel="stylesheet" href="stylesheets/joao.css">
     <title>BuzzQuiz</title>
 </head>
 <body>
@@ -20,8 +21,8 @@
                 Criar Quizz
             </button>
         </div>
-        <div class="allQuizzes">
-            <section>
+        <div>
+            <section class="userQuizzes">
                 <h2>
                     <p>Seus Quizzes</p>
                     <p>
@@ -57,13 +58,10 @@
                     </div>
                 </div>
             </section>
-            <section>
+            <section class="allQuizzes">
                 <h2>Todos os Quizzes</h2>
                 <div class="quizzes">
-                    <div class="quizz">
-                        <img src="images/Rectangle 34.png" alt="">
-                        <p>Acerte os personagens corretos dos Simpsons e prove seu amor!</p>
-                    </div>
+                    <!-- 
                     <div class="quizz">
                         <img src="images/Rectangle 36.png" alt="">
                         <p> O quanto você é de boas?</p>
@@ -84,6 +82,7 @@
                         <img src="images/Rectangle 34.png" alt="">
                         <p>Acerte os personagens corretos dos Simpsons e prove seu amor!</p>
                     </div>
+                     -->
                 </div>
             </section>
         </div>
@@ -110,8 +109,55 @@
         </section>
     </main>
 
+    <main class="joao hide">
+        <div class="quizzQuestions">
+            <div class="quizzTitle">
+                <img src="./images/Rectangle 42.png">
+                <h1>O quão Potterhead é você?</h1>
+            </div>
+        <div class="questions">
+            <!--start of a question-->
+            <div class="question">
+                <div class="questionTitle">
+                    Em qual animal Olho-Tonto Moody transfigurou Malfoy?
+                </div>
+                <div class="options">
+                    <div class="answer">
+                        <img src="images/image 4.png">
+                        <h1>Ratata</h1>
+                    </div>
+
+                    <div class="answer">
+                        <img src="images/image 4.png">
+                        <h1>Ratata</h1>
+                    </div>
+
+                    <div class="answer">
+                        <img src="images/image 4.png">
+                        <h1>Ratata</h1>
+                    </div>
+
+                    <div class="answer">
+                        <img src="images/image 4.png">
+                        <h1>Ratata</h1>
+                    </div>
+
+                </div>
+            </div>
+            <!--question end-->
+            
+        </div>
+
+        
+
+        </div>
+    </main>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="scripts/lucas.js"></script>
     <script src="scripts/fabio.js"></script>
+    <script src="scripts/joao.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>

@@ -88,12 +88,12 @@
   margin-bottom: 12px;
 }
 
-.teste {
+.header {
   display: flex; 
   justify-content: space-between;
 }
 
-.teste ion-icon {
+.header ion-icon {
   margin-top: 27px;
   margin-right: 17px;
   color: #000000;
