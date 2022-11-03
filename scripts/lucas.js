@@ -7,3 +7,25 @@ function hideCreateDiv(){
     item = document.querySelector('.createQuizz')
     item.classList.toggle('hide')
 }
+
+function getQuizzes(){
+    axios.get('https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes')
+    .then(quizzes => {
+        renderQuizzes(quizzes.data)
+    })
+}
+
+function renderQuizzes(quizzes){
+    let allQuizzes = document.querySelector('.allQuizzes .quizzes')
+    console.log(quizzes)
+    quizzes.forEach(quiz => {
+        allQuizzes.innerHTML += `
+        <div class="quizz">
+            <img src="${quiz.image}" alt="">
+            <p>${quiz.title}</p>
+        </div>
+        `
+    });
+}
+
+getQuizzes()
