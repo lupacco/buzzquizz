@@ -48,7 +48,7 @@
                         <p>Acerte os personagens corretos dos Simpsons e prove seu amor!</p>
                     </div>
                     <div class="quizz">
-                        <img src="images/Rectangle 36.png"" alt="">
+                        <img src="images/Rectangle 36.png" alt="">
                         <p> O quanto você é de boas?</p>
                     </div>
                     <div class="quizz">
@@ -77,7 +77,7 @@
                         <p>Acerte os personagens corretos dos Simpsons e prove seu amor!</p>
                     </div>
                     <div class="quizz">
-                        <img src="images/Rectangle 36.png"" alt="">
+                        <img src="images/Rectangle 36.png" alt="">
                         <p> O quanto você é de boas?</p>
                     </div>
                     <div class="quizz">
@@ -94,11 +94,19 @@
             <h1>Comece pelo começo</h1>
             <div class="quizz-information">
                 <input type="text" placeholder="Título do seu quizz">
-                <input type="text" placeholder="URL da imagem do seu quizz">
-                <input type="text" placeholder="Quantidade de perguntas do quizz">
-                <input type="text" placeholder="Quantidade de níveis do quizz">
+                <input type="url" placeholder="URL da imagem do seu quizz">
+                <input type="number" placeholder="Quantidade de perguntas do quizz">
+                <input type="number" placeholder="Quantidade de níveis do quizz">
             </div>
-            <button>Prosseguir pra criar perguntas</button>
+            <button onclick="createQuizz()">Prosseguir pra criar perguntas</button>
+        </section>
+
+        <section class="hide">
+            <h1>Crie suas perguntas</h1>
+            <div class="question-box">
+                
+            </div>
+            <button onclick="createQuestions()">Prosseguir pra criar níveis</button>
         </section>
     </main>
 
