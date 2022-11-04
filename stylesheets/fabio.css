@@ -1,4 +1,4 @@
-.fabio .informations, .fabio .levels {
+.fabio .informations, .fabio .levels, .fabio .sucess {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -6,7 +6,7 @@
   width: 600px;
 }
 
-.informations h1, .questions h1, .levels h1 {
+.informations h1, .questions h1, .levels h1, .sucess h1 {
   margin-bottom: 27px;
   font-size: 23px;
   font-weight: 700;
@@ -39,7 +39,7 @@
   padding-left: 18px;
 }
 
-.informations button, .questions button, .levels button {
+.informations button, .questions button, .levels button, .sucess button {
   width: 368px;
   height: 54px;
   border-radius: 15px;
@@ -122,4 +122,29 @@
 
 .level input {
   margin-bottom: 14px;
+}
+
+.fabio .quizz {
+  width: 500px;
+  height: 266px;
+}
+
+.fabio .sucess button {
+  width: 220px;
+  border-radius: 15px;
+  margin-top: 45px;
+}
+
+.fabio .sucess h2 {
+  font-size: 21px;
+  font-weight: 400;
+  color: #818181;
+  line-height: 25px;
+  margin-top: 15px;
+}
+
+.fabio .quizz p {
+  left: 23px;
+  bottom: 18px;
+  font-size: 23px;
 }

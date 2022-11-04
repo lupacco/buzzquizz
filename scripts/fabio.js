@@ -5,6 +5,7 @@ let inputNumberOfLevels;
 const questionsStorage = [];
 const levelsStorage = [];
 const questions = document.querySelector('.fabio section:nth-child(2)');
+const levels = document.querySelector('.fabio section:nth-child(3)');
 
 function openCreateQuizz() {
 	const mainLucas = document.querySelector('.lucas');
@@ -97,7 +98,6 @@ function createLevels() {
 	//     }
 	//   }
 	// }
-	const levels = document.querySelector('.fabio section:nth-child(3)');
 	questions.classList.add('hide');
 	questions.classList.remove('questions');
 	levels.classList.remove('hide');
@@ -121,4 +121,24 @@ function renderLevels() {
       </div>
     `;
 	}
+}
+
+function finishQuizz() {
+	const sucess = document.querySelector('.fabio section:nth-child(4)');
+	levels.classList.add('hide');
+	levels.classList.remove('levels');
+	sucess.classList.remove('hide');
+	sucess.classList.add('sucess');
+  renderSucess()
+}
+
+function renderSucess() {
+	const boxSucess = document.querySelector('.fabio .sucess-box');
+	boxSucess.innerHTML = `
+    <div class="quizz">
+      <div class="gradient"></div>
+      <img src="${inputImage}" alt="">
+      <p>${inputTitle}</p>
+    </div>
+  `
 }
