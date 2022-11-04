@@ -45,13 +45,12 @@ function showScreen2(){
 
 function renderTitle(){
     let Title = document.querySelector(".joao .quizzQuestions .quizzTitle");
-    console.log(returned)
-    //     t = returned.title;
-//     img = returned.image;
-//     Title.innerHTML =  `                  
-//     <img src="${img}">
-//     <h1>${t}</h1>
-// `
+    t = returned.title;
+    img = returned.image;
+    Title.innerHTML =  `                  
+    <img src="${img}">
+    <h1>${t}</h1>
+`
 ;
 }
 
