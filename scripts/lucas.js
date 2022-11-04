@@ -24,10 +24,14 @@ function renderQuizzes(quizzes){
         <div class="quizz" onclick="selectQuizz(this)">
             <div class="gradient"></div>
             <img src="${quiz.image}" alt="">
-            <p>${quiz.title}</p>
+            <p>${quiz.id}</p>
         </div>
         `
+        //trocar quiz.id por quiz.title
     });
-}
+    let renderedQuizzes = Array.from(allQuizzes.querySelectorAll('.quizz'))
+    console.log(renderedQuizzes)
+
+}   
 
 getQuizzes()
