@@ -142,3 +142,14 @@ function renderSucess() {
     </div>
   `
 }
+
+
+
+
+
+
+//Colocando um objeto em localstorage
+// let teste = {id: 16624, title: 'E lá vamos nós de novo, fazendo o quiz', image: 'https://www.elevana.com/images/blogs/Shrug.jpg', questions: [0,1,2], levels: [0,1,2,3]}
+//     console.log('setando')
+//     localStorage.setItem("userQuizzes",JSON.stringify(teste))
+//     console.log('setou')
