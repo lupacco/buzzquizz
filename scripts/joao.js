@@ -11,15 +11,17 @@ function selectQuizz(element){
         }
     }
     catchingId();
-    showScreen2();
-    renderTitle();
 }
 
 
 function catchingId(){
     console.log(Quizz[position].id);
     let promise = axios.get(`https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes/${Quizz[position].id}`);
-    promise.then(goodresp);
+    promise.then(r => {
+        goodresp(r)
+        showScreen2();
+        renderTitle();
+    });
 }
 
 let returned;
@@ -43,12 +45,13 @@ function showScreen2(){
 
 function renderTitle(){
     let Title = document.querySelector(".joao .quizzQuestions .quizzTitle");
-    t = returned.title;
-    img = returned.image;
-    Title.innerHTML =  `                  
-    <img src="${img}">
-    <h1>${t}</h1>
-`
+    console.log(returned)
+    //     t = returned.title;
+//     img = returned.image;
+//     Title.innerHTML =  `                  
+//     <img src="${img}">
+//     <h1>${t}</h1>
+// `
 ;
 }
 

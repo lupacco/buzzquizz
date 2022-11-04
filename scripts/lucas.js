@@ -18,7 +18,7 @@ let Quizz;
 function renderQuizzes(quizzes){
     let allQuizzes = document.querySelector('.allQuizzes .quizzes')
     Quizz = quizzes;
-    console.log(Quizz)
+    //console.log(Quizz)
     quizzes.forEach(quiz => {
         allQuizzes.innerHTML += `
         <div class="quizz" onclick="selectQuizz(this)">
@@ -30,7 +30,7 @@ function renderQuizzes(quizzes){
         //trocar quiz.id por quiz.title
     });
     let renderedQuizzes = Array.from(allQuizzes.querySelectorAll('.quizz'))
-    console.log(renderedQuizzes)
+    //console.log(renderedQuizzes)
 
 }   
 
