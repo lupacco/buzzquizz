@@ -6,6 +6,8 @@ const questionsStorage = [];
 const levelsStorage = [];
 const questions = document.querySelector('.fabio section:nth-child(2)');
 const levels = document.querySelector('.fabio section:nth-child(3)');
+const color = document.querySelectorAll('.color')
+const answer = document.querySelectorAll('.fabio .question .title')
 
 function openCreateQuizz() {
 	const mainLucas = document.querySelector('.lucas');
@@ -54,20 +56,20 @@ function createQuestions() {
             <p>Pergunta ${i + 1}</p>
             <ion-icon onclick="expandQuestion(this)" name="create-outline"></ion-icon>
         </div>
-        <input type="text" placeholder="Texto da pergunta">
-        <input type="text" placeholder="Cor de fundo da pergunta">
+        <input type="text" class="title" placeholder="Texto da pergunta">
+        <input type="text" class="color" placeholder="Cor de fundo da pergunta">
         <p>Resposta correta</p>
-        <input type="text" placeholder="Resposta correta">
-        <input type="text" placeholder="URL da imagem">
+        <input type="text" class="answer" placeholder="Resposta correta">
+        <input type="text" class="url" placeholder="URL da imagem">
         <p>Respostas incorretas</p>
-        <input type="text" placeholder="Resposta incorreta 1">
-        <input type="text" placeholder="URL da imagem 1">
+        <input type="text" class="answer" placeholder="Resposta incorreta 1">
+        <input type="text" class="url" placeholder="URL da imagem 1">
         <br> <br>
-        <input type="text" placeholder="Resposta incorreta 2">
-        <input type="text" placeholder="URL da imagem 2">
+        <input type="text" class="answer" placeholder="Resposta incorreta 2">
+        <input type="text" class="url" placeholder="URL da imagem 2">
         <br> <br>
-        <input type="text" placeholder="Resposta incorreta 3">
-        <input type="text" placeholder="URL da imagem 3">
+        <input type="text" class="answer" placeholder="Resposta incorreta 3">
+        <input type="text" class="url" placeholder="URL da imagem 3">
       </div>
     `;
 	}
@@ -98,11 +100,16 @@ function createLevels() {
 	//     }
 	//   }
 	// }
-	questions.classList.add('hide');
-	questions.classList.remove('questions');
-	levels.classList.remove('hide');
-	levels.classList.add('levels');
-	renderLevels();
+	if (teste()) {
+		alert('olá')
+	} else {
+		alert('tchau')
+	}
+	// questions.classList.add('hide');
+	// questions.classList.remove('questions');
+	// levels.classList.remove('hide');
+	// levels.classList.add('levels');
+	// renderLevels();
 }
 
 function renderLevels() {
@@ -141,4 +148,16 @@ function renderSucess() {
       <p>${inputTitle}</p>
     </div>
   `
+}
+
+function teste() {
+	let pool;
+	for(let i = 0; i < answer.length; i++) {
+		if(answer[i].value.length >= 20) {
+			pool = true
+		} else {
+			pool = false
+		}
+	}
+	return pool;
 }
