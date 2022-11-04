@@ -1,4 +1,4 @@
-.fabio .informations {
+.fabio .informations, .fabio .levels {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -6,13 +6,13 @@
   width: 600px;
 }
 
-.informations h1, .questions h1 {
+.informations h1, .questions h1, .levels h1 {
   margin-bottom: 27px;
   font-size: 23px;
   font-weight: 700;
 }
 
-.informations .quizz-information, .questions .question {
+.informations .quizz-information, .questions .question, .levels .level {
   width: 100%;
   height: 256px;
   display: flex;
@@ -23,7 +23,7 @@
   border-radius: 5px;
 }
 
-.quizz-information input, .question input {
+.quizz-information input, .question input, .level input {
   border: 2px solid #d1d1d1;
   border-radius: 5px;
   height: 46px;
@@ -34,12 +34,12 @@
   outline: none;
 }
 
-.quizz-information input::placeholder, .question input::placeholder {
+.quizz-information input::placeholder, .question input::placeholder, .level input::placeholder {
   color: #BABABA;
   padding-left: 18px;
 }
 
-.informations button, .questions button {
+.informations button, .questions button, .levels button {
   width: 368px;
   height: 54px;
   border-radius: 15px;
@@ -55,6 +55,10 @@
   margin-top: 61px;
 }
 
+.levels button {
+  margin-top: 75px;
+}
+
 
 .fabio .questions {
   display: flex;
@@ -64,7 +68,7 @@
   width: 600px;
 }
 
-.questions .question {
+.questions .question, .levels .level {
   height: 74px;
   overflow: hidden;
   text-align: start;
@@ -72,7 +76,7 @@
   margin-bottom: 24px;
 }
 
-.questions .question p {
+.questions .question p, .levels .level p {
   margin-left: 17px;
   margin-bottom: 27px;
   margin-top: 27px;
@@ -84,7 +88,7 @@
   height: 825px;
 }
 
-.question.selected p {
+.question.selected p, .level.selected p {
   margin-bottom: 12px;
 }
 
@@ -100,10 +104,22 @@
   font-size: 23px;
 }
 
-.question.selected ion-icon {
+.question.selected ion-icon, .level.selected ion-icon {
   display: none;
 }
 
 .question-box {
   width: 100%;
+}
+
+.level-box {
+  width: 100%;
+}
+
+.fabio .level.selected {
+  height: 316px;
+}
+
+.level input {
+  margin-bottom: 14px;
 }
