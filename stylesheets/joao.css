@@ -36,7 +36,7 @@
     color: #ffffff;
 }
 
-.questions{
+.joao .questions{
     height: 100%;
     margin-top: 42px;
     display: flex;
@@ -45,7 +45,7 @@
     
 }
 
-.question{
+.joao .question{
     margin-bottom: 42px;
     padding: 28px 36px;
     width: 759px;

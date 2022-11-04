@@ -1,4 +1,4 @@
-.fabio .informations {
+.fabio .informations, .fabio .levels, .fabio .sucess {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -6,25 +6,24 @@
   width: 600px;
 }
 
-.informations h1 {
+.informations h1, .questions h1, .levels h1, .sucess h1 {
   margin-bottom: 27px;
   font-size: 23px;
   font-weight: 700;
 }
 
-.informations .quizz-information {
+.informations .quizz-information, .questions .question, .levels .level {
   width: 100%;
   height: 256px;
   display: flex;
   flex-direction: column;
   background-color: #FFFFFF;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
-  margin-bottom: 85px;
   padding-top: 21px;
   border-radius: 5px;
 }
 
-.quizz-information input {
+.quizz-information input, .question input, .level input {
   border: 2px solid #d1d1d1;
   border-radius: 5px;
   height: 46px;
@@ -35,12 +34,12 @@
   outline: none;
 }
 
-.quizz-information input::placeholder {
+.quizz-information input::placeholder, .question input::placeholder, .level input::placeholder {
   color: #BABABA;
   padding-left: 18px;
 }
 
-.informations button {
+.informations button, .questions button, .levels button, .sucess button {
   width: 368px;
   height: 54px;
   border-radius: 15px;
@@ -49,4 +48,103 @@
   color: #FFF5F4;
   font-size: 21px;
   cursor: pointer;
+  margin-top: 85px;
+}
+
+.questions button {
+  margin-top: 61px;
+}
+
+.levels button {
+  margin-top: 75px;
+}
+
+
+.fabio .questions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 600px;
+}
+
+.questions .question, .levels .level {
+  height: 74px;
+  overflow: hidden;
+  text-align: start;
+  padding-top: 0;
+  margin-bottom: 24px;
+}
+
+.questions .question p, .levels .level p {
+  margin-left: 17px;
+  margin-bottom: 27px;
+  margin-top: 27px;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.question.selected {
+  height: 825px;
+}
+
+.question.selected p, .level.selected p {
+  margin-bottom: 12px;
+}
+
+.header {
+  display: flex; 
+  justify-content: space-between;
+}
+
+.header ion-icon {
+  margin-top: 27px;
+  margin-right: 17px;
+  color: #000000;
+  font-size: 23px;
+}
+
+.question.selected ion-icon, .level.selected ion-icon {
+  display: none;
+}
+
+.question-box {
+  width: 100%;
+}
+
+.level-box {
+  width: 100%;
+}
+
+.fabio .level.selected {
+  height: 316px;
+}
+
+.level input {
+  margin-bottom: 14px;
+}
+
+.fabio .quizz {
+  width: 500px;
+  height: 266px;
+}
+
+.fabio .sucess button {
+  width: 220px;
+  border-radius: 15px;
+  margin-top: 45px;
+}
+
+.fabio .sucess h2 {
+  font-size: 21px;
+  font-weight: 400;
+  color: #818181;
+  line-height: 25px;
+  margin-top: 15px;
+}
+
+.fabio .quizz p {
+  left: 23px;
+  bottom: 18px;
+  font-size: 23px;
 }
