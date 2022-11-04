@@ -93,3 +93,11 @@
     height: 175px;
     margin-bottom: 10px;
 }
+
+.correctAsw {
+    color: #009C22;
+}
+
+.wrongAsw {
+    color:#FF4B4B;
+}

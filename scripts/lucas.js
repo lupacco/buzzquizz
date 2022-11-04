@@ -14,13 +14,14 @@ function getQuizzes(){
         renderQuizzes(quizzes.data)
     })
 }
-
+let Quizz;
 function renderQuizzes(quizzes){
     let allQuizzes = document.querySelector('.allQuizzes .quizzes')
-    console.log(quizzes)
+    Quizz = quizzes;
+    console.log(Quizz)
     quizzes.forEach(quiz => {
         allQuizzes.innerHTML += `
-        <div class="quizz">
+        <div class="quizz" onclick="selectQuizz(this)">
             <div class="gradient"></div>
             <img src="${quiz.image}" alt="">
             <p>${quiz.title}</p>
