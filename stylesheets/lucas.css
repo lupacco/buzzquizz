@@ -102,6 +102,7 @@ ion-icon{
     height: 181px;
     margin: 16px 0;
     position: relative;
+    border-radius: 8px;
 }
 .quizz:hover{
     cursor: pointer;
@@ -121,6 +122,8 @@ ion-icon{
 }
 .quizz p {
     position: absolute;
+    max-width: 330px;
+    overflow: hidden;
     bottom: 12px;
     left: 8px;
     color: #FFFFFF;
