@@ -21,6 +21,7 @@ function catchingId(){
         goodresp(r)
         showScreen2();
         renderTitle();
+        renderQuestions();
     });
 }
 
@@ -58,55 +59,67 @@ function random() {
 	return Math.random() - 0.5; 
 }
 
+
+//array vazio 
+//fazer uma função onde:
+
+//1. pega as respostas de cada i-pergunta 
+//2. embaralha as respostas desse i
+//3. retorna esse array
+//EMBARALHAR RESPOSTAS
+
+let array = [];
+
+function randomAns(){
+
+
+
+}
+array.sort(random);
+console.log(array);
+
+
+
+
 function renderQuestions(){
     let questions = document.querySelector(".joao .questions");
-    console.log(questions);
-    let ans = [];
-    for(let i = 0; i < returnedObj.questions.answers.length; i++){
-        ans.push(returnedObj.questions.answers[i]);
-    }
-    ans.sort(random);
     questions.innerHTML = "";
-    for (let i=0; i < returnedObj.questions.length; i++){
-        for(let i=0; i < ans.length; i++){
-        questions += `
+    //for para percorrer questions
+    for(let i = 0; i < returned.questions.length; i++){
+        //segundo for para procurar as answers dentro de questions
+        for(let j = 0; j <returned.questions[i]; j++){
+        questions.innerHTML += `
         <div class="question">
         <div class="questionTitle">
-            ${returnedObj.questions[i].title}
-        </div>
+            ${returned.questions[i].title}         
+            </div>
         <div class="options">
             <div class="answer">
-                <img src="${returnedObj.questions[i].ans[j].image}">
-                <h1>${returnedObj.questions[i].ans[j].text}</h1>
+                <img src="${returned.questions[i].answers[j].image}">
+                <h1>${returned.questions[i].answers[j].text}</h1>
             </div>
 
             <div class="answer">
-                <img src="${returnedObj.questions[i].ans[j].image}">
-                <h1>${returnedObj.questions[i].ans[j].text}</h1>
+                <img src="${returned.questions[i].answers[j].image}">
+                <h1>${returned.questions[i].answers[j].text}</h1>
             </div>
 
             <div class="answer">
-                <img src="${returnedObj.questions[i].ans[j].image}">
-                <h1>${returnedObj.questions[i].ans[j].text}</h1>
+                <img src="${returned.questions[i].answers[j].image}">
+                <h1>${returned.questions[i].answers[j].text}</h1>
             </div>
 
             <div class="answer">
-                <img src="${returnedObj.questions[i].ans[j].image}">
-                <h1>${returnedObj.questions[i].ans[j].text}</h1>
+                <img src="${returned.questions[i].answers[j].image}">
+                <h1>${returned.questions[i].answers[j].text}</h1>
             </div>
 
         </div>
     </div>
 
         `
-        ;
-
-
     }
 }
-
-
 }
-
 
 

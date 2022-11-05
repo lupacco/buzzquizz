@@ -29,10 +29,13 @@ function renderUserQuizzes(quizzes){
     
 
 }
+let Quizz;
 //Renderiza todos os quizzes
 function renderQuizzes(quizzes){
     //Resgata div que contém todos os quizes
     let allQuizzes = document.querySelector('.allQuizzes .quizzes')
+    //guarda um array com todos os quizzes (usado em selectQuizz())
+    Quizz = quizzes;
     quizzes.forEach(quiz => {
         allQuizzes.innerHTML += `
         <div class="quizz" onclick="selectQuizz(this)">
