@@ -71,55 +71,53 @@ function random() {
 let array = [];
 
 function randomAns(){
-
-
-
+    for(let i = 0; returned.questions.length; i++){
+        for(let j = 0; returned.questions[i].answers.length; j++){
+            let element = returned.questions[i].answers[j];
+            array.push(element);
+        }
+    }
+    console.log(returned);
 }
-array.sort(random);
-console.log(array);
+randomAns();
+//array.sort(random);
+//console.log(array);
 
 
 
 
 function renderQuestions(){
+    // 1. renderiza titulos de perguntas
     let questions = document.querySelector(".joao .questions");
     questions.innerHTML = "";
     //for para percorrer questions
     for(let i = 0; i < returned.questions.length; i++){
         //segundo for para procurar as answers dentro de questions
-        for(let j = 0; j <returned.questions[i]; j++){
+        //for(let j = 0; j <returned.questions[i].answers.length; j++){
         questions.innerHTML += `
         <div class="question">
         <div class="questionTitle">
             ${returned.questions[i].title}         
             </div>
-        <div class="options">
-            <div class="answer">
-                <img src="${returned.questions[i].answers[j].image}">
-                <h1>${returned.questions[i].answers[j].text}</h1>
-            </div>
+        <div class="options"> </div> </div>`
 
-            <div class="answer">
-                <img src="${returned.questions[i].answers[j].image}">
-                <h1>${returned.questions[i].answers[j].text}</h1>
-            </div>
-
-            <div class="answer">
-                <img src="${returned.questions[i].answers[j].image}">
-                <h1>${returned.questions[i].answers[j].text}</h1>
-            </div>
-
-            <div class="answer">
-                <img src="${returned.questions[i].answers[j].image}">
-                <h1>${returned.questions[i].answers[j].text}</h1>
-            </div>
-
-        </div>
-    </div>
-
+    }
+    // 2.renderiza as respostas de cada pergunta
+    let answers = document.querySelectorAll(".joao .questions .options");
+    console.log(answers);
+    for (let i = 0; i < answers.length; i++){
+        for(let j = 0; j < returned.questions[i].answers.length; i++){
+        answers[i].innerHTML = answers[i].innerHTML + 
         `
+        <div class="answer">
+                <img src="${returned.questions[i].answers[j].image}">
+                <h1>${returned.questions[i].answers[j].text}</h1>
+        </div>
+        
+        `
+        }
     }
 }
-}
+
 
 
