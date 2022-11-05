@@ -97,7 +97,7 @@ function renderQuestions(){
         //segundo for para procurar as answers dentro de questions
         //for(let j = 0; j <returned.questions[i].answers.length; j++){
         questions.innerHTML += `
-        <div class="question">
+        <div class="question ${i}">
         <div class="questionTitle" style = "background-color: ${returned.questions[i].color};">
             ${returned.questions[i].title}         
             </div>
@@ -110,7 +110,7 @@ function renderQuestions(){
         for(let j = 0; j < returned.questions[i].answers.length; j++){
         answers[i].innerHTML = answers[i].innerHTML + 
         `
-        <div class="answer">
+        <div class="answer" id="${returned.questions[i].answers[j].isCorrectAnswer}" onclick = "ansClick(this)">
                 <img src="${returned.questions[i].answers[j].image}">
                 <h1>${returned.questions[i].answers[j].text}</h1>
         </div>
@@ -120,5 +120,29 @@ function renderQuestions(){
     }
 }
 
+//1. clico em uma resposta
+//2. verifica cada resposta
+//3. muda a cor do seu texto
 
 
+function ansClick (element) {
+
+    //1. cliclar em uma resposta
+    //2. selecionar a div options daquela resposta
+    let o = element.parentNode
+    let array = o.querySelectorAll(".answer");
+    //3. acinzentar todas as respostas não escolhida
+    for (let i = 0 ; i < array.length; i++){
+        if(array[i] !== element){
+            array[i].classList.add("nonClicked");
+        }
+    }
+    //4. mudar a cor do texto de acordo com true ou false
+    for (let i = 0;  i < array.length ; i++){
+        if(array[i].id === "true"){
+          array[i].classList.add("correctAsw");
+        } else{
+            array[i].classList.add("wrongAsw");
+        }
+    }
+}

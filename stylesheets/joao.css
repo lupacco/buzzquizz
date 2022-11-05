@@ -87,6 +87,7 @@
     font-size: 20px;
     line-height: 23px;
     color: #000000;
+    cursor: pointer;
 }
 
 .answer img{
@@ -101,4 +102,12 @@
 
 .wrongAsw {
     color:#FF4B4B;
+}
+
+.nonClicked{
+    opacity: 0.3;
+}
+
+.click{
+    opacity: 1;
 }
