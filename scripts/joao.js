@@ -21,6 +21,8 @@ function catchingId(){
         goodresp(r)
         showScreen2();
         renderTitle();
+        renderQuestions();
+        randomAns();
     });
 }
 
@@ -59,54 +61,67 @@ function random() {
 }
 
 function renderQuestions(){
+    // 1. renderiza titulos de perguntas
     let questions = document.querySelector(".joao .questions");
-    console.log(questions);
-    let ans = [];
-    for(let i = 0; i < returnedObj.questions.answers.length; i++){
-        ans.push(returnedObj.questions.answers[i]);
-    }
-    ans.sort(random);
     questions.innerHTML = "";
-    for (let i=0; i < returnedObj.questions.length; i++){
-        for(let i=0; i < ans.length; i++){
-        questions += `
-        <div class="question">
-        <div class="questionTitle">
-            ${returnedObj.questions[i].title}
-        </div>
-        <div class="options">
-            <div class="answer">
-                <img src="${returnedObj.questions[i].ans[j].image}">
-                <h1>${returnedObj.questions[i].ans[j].text}</h1>
+    //for para percorrer questions
+    for(let i = 0; i < returned.questions.length; i++){
+        //segundo for para procurar as answers dentro de questions
+        //for(let j = 0; j <returned.questions[i].answers.length; j++){
+        questions.innerHTML += `
+        <div class="question ${i}">
+        <div class="questionTitle" style = "background-color: ${returned.questions[i].color};">
+            ${returned.questions[i].title}         
             </div>
+        <div class="options"> </div> </div>`
 
-            <div class="answer">
-                <img src="${returnedObj.questions[i].ans[j].image}">
-                <h1>${returnedObj.questions[i].ans[j].text}</h1>
-            </div>
+    }
+    //2. embaralha as respostas
+    for (let i=0; i < returned.questions.length; i++){
+        returned.questions[i].answers.sort(random);
+    }
+    // 3.renderiza as respostas de cada pergunta
 
-            <div class="answer">
-                <img src="${returnedObj.questions[i].ans[j].image}">
-                <h1>${returnedObj.questions[i].ans[j].text}</h1>
-            </div>
-
-            <div class="answer">
-                <img src="${returnedObj.questions[i].ans[j].image}">
-                <h1>${returnedObj.questions[i].ans[j].text}</h1>
-            </div>
-
-        </div>
-    </div>
-
+    let answers = document.querySelectorAll(".joao .questions .options");
+    for (let i = 0; i < answers.length; i++){
+        for(let j = 0; j < returned.questions[i].answers.length; j++){
+        answers[i].innerHTML = answers[i].innerHTML + 
         `
-        ;
-
-
+        <div class="answer" id="${returned.questions[i].answers[j].isCorrectAnswer}" onclick = "ansClick(this)">
+                <img src="${returned.questions[i].answers[j].image}">
+                <h1>${returned.questions[i].answers[j].text}</h1>
+        </div>
+        
+        `
+        }
     }
 }
 
+function ansClick (element) {
+
+    //1. cliclar em uma resposta
+    //2. selecionar a div options daquela resposta
+    let o = element.parentNode
+    let array = o.querySelectorAll(".answer");
+    //3. acinzentar todas as respostas não escolhida
+    for (let i = 0 ; i < array.length; i++){
+        if(array[i] !== element){
+            array[i].classList.add("nonClicked");
+        }
+    }
+    //4. mudar a cor do texto de acordo com true ou false
+    for (let i = 0;  i < array.length ; i++){
+        if(array[i].id === "true"){
+          array[i].classList.add("correctAsw");
+        } else{
+            array[i].classList.add("wrongAsw");
+        }
+    }
+    //5. cancelar todos onclick
+    for (let i = 0; i<array.length; i++){
+        array[i].onclick = null;
+    }
+    //6. scrollar para proxima pergunta apos 2 segundos
+
 
 }
-
-
-
