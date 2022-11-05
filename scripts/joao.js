@@ -60,7 +60,6 @@ function random() {
 	return Math.random() - 0.5; 
 }
 
-
 //array vazio 
 //fazer uma função onde:
 
@@ -69,19 +68,6 @@ function random() {
 //3. retorna esse array
 //EMBARALHAR RESPOSTAS
 
-let array = [];
-
-function randomAns(){
-    for (let i = 0; i < returned.questions.length; i++){
-        for (let j = 0; j < returned.questions[i].answers.length; j++){
-            let ans = returned.questions[i].answers[j];
-            array.push(ans);
-
-        }
-    }
-console.log(array);
-
-}
 //array.sort(random);
 //console.log(array);
 
@@ -105,6 +91,9 @@ function renderQuestions(){
 
     }
     // 2.renderiza as respostas de cada pergunta
+    for (let i=0; i < returned.questions.length; i++){
+        returned.questions[i].answers.sort(random);
+    }
     let answers = document.querySelectorAll(".joao .questions .options");
     for (let i = 0; i < answers.length; i++){
         for(let j = 0; j < returned.questions[i].answers.length; j++){
