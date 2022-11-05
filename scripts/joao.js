@@ -60,20 +60,6 @@ function random() {
 	return Math.random() - 0.5; 
 }
 
-//array vazio 
-//fazer uma função onde:
-
-//1. pega as respostas de cada i-pergunta 
-//2. embaralha as respostas desse i
-//3. retorna esse array
-//EMBARALHAR RESPOSTAS
-
-//array.sort(random);
-//console.log(array);
-
-
-
-
 function renderQuestions(){
     // 1. renderiza titulos de perguntas
     let questions = document.querySelector(".joao .questions");
@@ -90,10 +76,12 @@ function renderQuestions(){
         <div class="options"> </div> </div>`
 
     }
-    // 2.renderiza as respostas de cada pergunta
+    //2. embaralha as respostas
     for (let i=0; i < returned.questions.length; i++){
         returned.questions[i].answers.sort(random);
     }
+    // 3.renderiza as respostas de cada pergunta
+
     let answers = document.querySelectorAll(".joao .questions .options");
     for (let i = 0; i < answers.length; i++){
         for(let j = 0; j < returned.questions[i].answers.length; j++){
@@ -108,11 +96,6 @@ function renderQuestions(){
         }
     }
 }
-
-//1. clico em uma resposta
-//2. verifica cada resposta
-//3. muda a cor do seu texto
-
 
 function ansClick (element) {
 
@@ -134,4 +117,11 @@ function ansClick (element) {
             array[i].classList.add("wrongAsw");
         }
     }
+    //5. cancelar todos onclick
+    for (let i = 0; i<array.length; i++){
+        array[i].onclick = null;
+    }
+    //6. scrollar para proxima pergunta apos 2 segundos
+
+
 }
