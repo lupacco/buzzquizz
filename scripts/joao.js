@@ -22,6 +22,7 @@ function catchingId(){
         showScreen2();
         renderTitle();
         renderQuestions();
+        randomAns();
     });
 }
 
@@ -71,15 +72,16 @@ function random() {
 let array = [];
 
 function randomAns(){
-    for(let i = 0; returned.questions.length; i++){
-        for(let j = 0; returned.questions[i].answers.length; j++){
-            let element = returned.questions[i].answers[j];
-            array.push(element);
+    for (let i = 0; i < returned.questions.length; i++){
+        for (let j = 0; j < returned.questions[i].answers.length; j++){
+            let ans = returned.questions[i].answers[j];
+            array.push(ans);
+
         }
     }
-    console.log(returned);
+console.log(array);
+
 }
-randomAns();
 //array.sort(random);
 //console.log(array);
 
@@ -96,7 +98,7 @@ function renderQuestions(){
         //for(let j = 0; j <returned.questions[i].answers.length; j++){
         questions.innerHTML += `
         <div class="question">
-        <div class="questionTitle">
+        <div class="questionTitle" style = "background-color: ${returned.questions[i].color};">
             ${returned.questions[i].title}         
             </div>
         <div class="options"> </div> </div>`
@@ -104,9 +106,8 @@ function renderQuestions(){
     }
     // 2.renderiza as respostas de cada pergunta
     let answers = document.querySelectorAll(".joao .questions .options");
-    console.log(answers);
     for (let i = 0; i < answers.length; i++){
-        for(let j = 0; j < returned.questions[i].answers.length; i++){
+        for(let j = 0; j < returned.questions[i].answers.length; j++){
         answers[i].innerHTML = answers[i].innerHTML + 
         `
         <div class="answer">
