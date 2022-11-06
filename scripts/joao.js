@@ -1,5 +1,9 @@
 let quizzList;
 let position;
+let click = 0;
+let score = 0;
+let a =[];
+let result;
 
 
 function selectQuizz(element){
@@ -23,6 +27,7 @@ function catchingId(){
         showScreen2();
         renderTitle();
         renderQuestions();
+        randomAns();
     });
 }
 
@@ -95,10 +100,15 @@ function renderQuestions(){
         `
         }
     }
+    catchQuestions();
 }
 
-function ansClick (element) {
+function catchQuestions(){
+     a = document.querySelectorAll(".question");
+}
 
+
+function ansClick (element) {
     //1. cliclar em uma resposta
     //2. selecionar a div options daquela resposta
     let o = element.parentNode
@@ -122,7 +132,51 @@ function ansClick (element) {
         array[i].onclick = null;
     }
     //6. scrollar para proxima pergunta apos 2 segundos
-    o.nextElementSibling.scrollIntoView();
+
+
+    //7. score
+    if (element.id === "true"){
+        score = score + 1;
+    }
+    click = click + 1;
+    if (click === a.length){
+        renderEnd()
+    }
+}
+
+function renderEnd(){
+    let values = [];
+    for (let i = 0; i < returned.levels.length; i++){
+        let value = returned.levels[i];
+        values.push(value);
+    }
+
+    let renderEndTitle = document.querySelector(".endQuiz .endTitle");
+    let renderEndMessage = document.querySelector(".endQuiz .endmessage");
+
+    renderEndTitle.innerHTML = "";
+    renderEndMessage.innerHTML = "";
+
+for (let i = 0; i < returned.levels.length ; i++){
+    if (result > returned.levels[i]){
+        renderEndTitle.innerHTML += `
+        ${returned.levels[i].title}
+        `;
+        renderEndMessage.innerHTML += `
+        <img src="${returned.levels[i].image}">
+        <p>${returned.levels[i].text}</p>
+
+        `
+
+    }
+
+}
+    let endd = document.querySelector(".end");
+    endd.classList.remove("hide");
+    let r = (score / a.length)*100;
+    result = Math.round(r);
+
+
 
 }
 
@@ -138,15 +192,20 @@ function home(){
 
 function restart(){
     window.scrollTo(0, 0);
-    let arrayquestions = document.querySelectorAll(".answer");
-    console.log(arrayquestions);
-    for(let i=0; i<arrayquestions[i].length;i++){
-        if(array.questions[i].id === "true"){
-            arrayquestions[i].classList.remove("correctAsw");
-        } else {
-        arrayquestions[i].classList.remove("nonClicked");
-        arrayquestions[i].classList.remove("wrongAsw");
+    let a = document.querySelectorAll(".answer");
+    for(let i = 0; i< a.length; i++){
+    if (a[i].id === "true"){
+        a[i].classList.remove("correctAsw");
+        a[i].classList.remove("nonClicked");
+
+    } else{
+        a[i].classList.remove("wrongAsw");
+        a[i].classList.remove("nonClicked");
 
     }
+
 }
+
+//voltar onclicks
+
 }
