@@ -26,7 +26,7 @@
                 <h2>
                     <p>Seus Quizzes</p>
                     <p>
-                        <button onclick="hideCreateDiv()">
+                        <button onclick="openCreateQuizz()">
                             <ion-icon name="add-circle"></ion-icon>
                         </button>
                     </p>
@@ -118,7 +118,16 @@
             <h1>Agora, decida os níveis</h1>
             <form action="javascript: finishQuizz();">
             <div class="level-box">
-                
+                <div class="level">
+                    <div class="header">
+                        <p>Nivel 1</p>
+                        <ion-icon onclick="expandQuestion(this)" name="create-outline"></ion-icon>
+                    </div>
+                    <input type="text" minlength="10" required title="minimo de 10 letras" placeholder="Título do nível">
+                    <input type="number" min="0" max="0" required title="esse precisa ser 0%" placeholder="% de acerto mínima">
+                    <input type="url" required placeholder="URL da imagem do nível">
+                    <input type="text" minlength="30" required title="minimo de 30 letras" placeholder="Descrição do nível">
+                </div>
             </div>
             <input type="submit" class="button-create" value="Finalizar Quizz">
             </form>
