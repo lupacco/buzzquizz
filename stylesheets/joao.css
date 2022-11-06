@@ -79,7 +79,7 @@
     padding-top: 20px;
     justify-content: space-between;
 }
-.answer{
+.joao .answer{
     width: 330px;
     height: 218px;
     display: flex;
@@ -92,7 +92,7 @@
     cursor: pointer;
 }
 
-.answer img{
+.joao .answer img{
     width: 330px;
     height: 175px;
     margin-bottom: 10px;

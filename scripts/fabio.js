@@ -26,27 +26,16 @@ function createQuizz() {
 	inputNumberOfLevels = Number(
 		document.querySelector('.fabio .quizz-information input:nth-child(4)').value
 	);
-	if (
-		inputTitle.length >= 20 &&
-		inputTitle.length <= 65 &&
-		inputNumberOfQuestions >= 3 &&
-		inputNumberOfQuestions <= 5 &&
-		inputNumberOfLevels >= 2 &&
-		inputNumberOfLevels <= 4 &&
-		!inputImage.indexOf('https://')
-	) {
-		informations.classList.add('hide');
-		informations.classList.remove('informations');
-		questions.classList.remove('hide');
-		questions.classList.add('questions');
-		createQuestions();
-	} else {
-		alert('Preencha os dados corretamente por favor');
-	}
+	informations.classList.add('hide');
+	informations.classList.remove('informations');
+	questions.classList.remove('hide');
+	questions.classList.add('questions');
+	createQuestions();
 }
 
 function createQuestions() {
-	const boxQuestions = document.querySelector('.fabio .question-box');
+	let boxQuestions = document.querySelector('.fabio .question-box');
+
 	for (let i = 0; i < inputNumberOfQuestions; i++) {
 		boxQuestions.innerHTML += `
       <div class="question">
@@ -54,20 +43,20 @@ function createQuestions() {
             <p>Pergunta ${i + 1}</p>
             <ion-icon onclick="expandQuestion(this)" name="create-outline"></ion-icon>
         </div>
-        <input type="text" placeholder="Texto da pergunta">
-        <input type="text" placeholder="Cor de fundo da pergunta">
+        <input type="text" minlength="20" required title="minimo de 20 letras" placeholder="Texto da pergunta">
+        <input type="text" pattern="^#+([a-fA-F0-9]{6}|[a-fA-F0-9]{6})$" required title="começar em #, seguida de 6 caracteres hexadecimais, ou seja, números ou letras de A a F" placeholder="Cor de fundo da pergunta">
         <p>Resposta correta</p>
-        <input type="text" placeholder="Resposta correta">
-        <input type="text" placeholder="URL da imagem">
+        <input type="text" class="answer" required placeholder="Resposta correta">
+        <input type="url" class="url" required placeholder="URL da imagem">
         <p>Respostas incorretas</p>
-        <input type="text" placeholder="Resposta incorreta 1">
-        <input type="text" placeholder="URL da imagem 1">
+        <input type="text" class="answer" required placeholder="Resposta incorreta 1">
+        <input type="url" class="url" required placeholder="URL da imagem 1">
         <br> <br>
-        <input type="text" placeholder="Resposta incorreta 2">
-        <input type="text" placeholder="URL da imagem 2">
+        <input type="text" class="answer" placeholder="Resposta incorreta 2">
+        <input type="url" class="url" placeholder="URL da imagem 2">
         <br> <br>
-        <input type="text" placeholder="Resposta incorreta 3">
-        <input type="text" placeholder="URL da imagem 3">
+        <input type="text" class="answer" placeholder="Resposta incorreta 3">
+        <input type="url" class="url" placeholder="URL da imagem 3">
       </div>
     `;
 	}
@@ -85,19 +74,6 @@ function expandQuestion(req) {
 }
 
 function createLevels() {
-	// const boxQuestions = document.querySelectorAll('.fabio .question')
-	// let inputQuestions;
-	// let questionText;
-	// for (let i = 0; i < boxQuestions.length; i++) {
-	//   inputQuestions = boxQuestions[i].querySelectorAll('input')
-	//   for (let i = 0; i < inputQuestions.length; i++) {
-	//     if (inputQuestions[i].value !== '') {
-	//       questionText = inputQuestions[i].value
-	//       questionsStorage.push(questionText)
-	//       console.log(questionsStorage[i])
-	//     }
-	//   }
-	// }
 	questions.classList.add('hide');
 	questions.classList.remove('questions');
 	levels.classList.remove('hide');
@@ -114,10 +90,10 @@ function renderLevels() {
             <p>Nivel ${i + 1}</p>
             <ion-icon onclick="expandQuestion(this)" name="create-outline"></ion-icon>
         </div>
-        <input type="text" placeholder="Título do nível">
-        <input type="text" placeholder="% de acerto mínima">
-        <input type="text" placeholder="URL da imagem do nível">
-        <input type="text" placeholder="Descrição do nível">
+        <input type="text" minlength="10" required title="minimo de 10 letras" placeholder="Título do nível">
+        <input type="number" min="0" max="100" required placeholder="% de acerto mínima">
+        <input type="url" required placeholder="URL da imagem do nível">
+        <input type="text" minlength="30" required title="minimo de 30 letras" placeholder="Descrição do nível">
       </div>
     `;
 	}
@@ -129,7 +105,7 @@ function finishQuizz() {
 	levels.classList.remove('levels');
 	sucess.classList.remove('hide');
 	sucess.classList.add('sucess');
-  renderSucess()
+	renderSucess();
 }
 
 function renderSucess() {
@@ -140,16 +116,5 @@ function renderSucess() {
       <img src="${inputImage}" alt="">
       <p>${inputTitle}</p>
     </div>
-  `
+  `;
 }
-
-
-
-
-
-
-//Colocando um objeto em localstorage
-// let teste = {id: 16624, title: 'E lá vamos nós de novo, fazendo o quiz', image: 'https://www.elevana.com/images/blogs/Shrug.jpg', questions: [0,1,2], levels: [0,1,2,3]}
-//     console.log('setando')
-//     localStorage.setItem("userQuizzes",JSON.stringify(teste))
-//     console.log('setou')

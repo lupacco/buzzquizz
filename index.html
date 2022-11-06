@@ -91,29 +91,38 @@
     <main class="fabio hide">
         <section class="informations">
             <h1>Comece pelo começo</h1>
-            <div class="quizz-information">
-                <input type="text" placeholder="Título do seu quizz">
-                <input type="url" placeholder="URL da imagem do seu quizz">
-                <input type="number" placeholder="Quantidade de perguntas do quizz">
-                <input type="number" placeholder="Quantidade de níveis do quizz">
-            </div>
-            <button onclick="createQuizz()">Prosseguir pra criar perguntas</button>
+            <form action="javascript: createQuizz();">
+                <div class="quizz-information">
+                    <input type="text" minlength="20" maxlength="65" required title="Digite entre 20 e 65" placeholder="Título do seu quizz">
+                    <input type="url" required title="Digite uma URL válida" placeholder="URL da imagem do seu quizz">
+                    <input type="number" min="3" required title="Digite um número igual ou maior que 3" placeholder="Quantidade de perguntas do quizz">
+                    <input type="number" min="2" required title="Digite um número igual ou maior que 2" placeholder="Quantidade de níveis do quizz">
+                </div>
+                <input class="button-create" type="submit" value="Prosseguir pra criar perguntas">
+                <!-- <button onclick="createQuizz()">Prosseguir pra criar perguntas</button> -->
+            </form>
         </section>
 
         <section class="hide">
             <h1>Crie suas perguntas</h1>
+            <form action="javascript: createLevels();">
             <div class="question-box">
                 
             </div>
-            <button onclick="createLevels()">Prosseguir pra criar níveis</button>
+            <input type="submit" class="button-create" value="Prosseguir pra criar níveis">
+            </form>
+            <!-- <button onclick="createLevels()">Prosseguir pra criar níveis</button> -->
         </section>
 
         <section class="hide">
             <h1>Agora, decida os níveis</h1>
+            <form action="javascript: finishQuizz();">
             <div class="level-box">
                 
             </div>
-            <button onclick="finishQuizz()">Finalizar Quizz</button>
+            <input type="submit" class="button-create" value="Finalizar Quizz">
+            </form>
+            <!-- <button onclick="finishQuizz()">Finalizar Quizz</button> -->
         </section>
 
         <section class="hide">

@@ -148,3 +148,19 @@
   bottom: 18px;
   font-size: 23px;
 }
+
+.button-create {
+  width: 368px;
+  height: 54px;
+  border-radius: 15px;
+  background-color: #EC362D;
+  border: none;
+  color: #FFF5F4;
+  font-size: 21px;
+  cursor: pointer;
+  margin-top: 85px;
+}
+
+form {
+  width: 600px;
+}
