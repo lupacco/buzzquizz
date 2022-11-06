@@ -3,6 +3,7 @@ let position;
 
 
 function selectQuizz(element){
+    window.scrollTo(0, 0);
     quizzList = document.querySelectorAll(".allQuizzes .quizzes .quizz");
 
     for (let i = 0; i<quizzList.length; i++){
@@ -22,7 +23,6 @@ function catchingId(){
         showScreen2();
         renderTitle();
         renderQuestions();
-        randomAns();
     });
 }
 
@@ -122,6 +122,31 @@ function ansClick (element) {
         array[i].onclick = null;
     }
     //6. scrollar para proxima pergunta apos 2 segundos
+    o.nextElementSibling.scrollIntoView();
 
+}
 
+function home(){
+    let screen1 = document.querySelector(".lucas");
+    let screen2 = document.querySelector(".joao");
+    let screen3 = document.querySelector(".fabio");
+
+    screen1.classList.remove("hide");
+    screen2.classList.add("hide");
+    screen3.classList.add("hide")
+}
+
+function restart(){
+    window.scrollTo(0, 0);
+    let arrayquestions = document.querySelectorAll(".answer");
+    console.log(arrayquestions);
+    for(let i=0; i<arrayquestions[i].length;i++){
+        if(array.questions[i].id === "true"){
+            arrayquestions[i].classList.remove("correctAsw");
+        } else {
+        arrayquestions[i].classList.remove("nonClicked");
+        arrayquestions[i].classList.remove("wrongAsw");
+
+    }
+}
 }
