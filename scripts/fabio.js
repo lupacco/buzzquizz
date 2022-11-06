@@ -43,20 +43,20 @@ function createQuestions() {
             <p>Pergunta ${i + 1}</p>
             <ion-icon onclick="expandQuestion(this)" name="create-outline"></ion-icon>
         </div>
-        <input type="text" placeholder="Texto da pergunta">
-        <input type="text" placeholder="Cor de fundo da pergunta">
+        <input type="text" minlength="20" required title="minimo de 20 letras" placeholder="Texto da pergunta">
+        <input type="text" pattern="^#+([a-fA-F0-9]{6}|[a-fA-F0-9]{6})$" required title="começar em #, seguida de 6 caracteres hexadecimais, ou seja, números ou letras de A a F" placeholder="Cor de fundo da pergunta">
         <p>Resposta correta</p>
-        <input type="text" class="answer" placeholder="Resposta correta">
-        <input type="text" class="url" placeholder="URL da imagem">
+        <input type="text" class="answer" required placeholder="Resposta correta">
+        <input type="url" class="url" required placeholder="URL da imagem">
         <p>Respostas incorretas</p>
-        <input type="text" class="answer" placeholder="Resposta incorreta 1">
-        <input type="text" class="url" placeholder="URL da imagem 1">
+        <input type="text" class="answer" required placeholder="Resposta incorreta 1">
+        <input type="url" class="url" required placeholder="URL da imagem 1">
         <br> <br>
         <input type="text" class="answer" placeholder="Resposta incorreta 2">
-        <input type="text" class="url" placeholder="URL da imagem 2">
+        <input type="url" class="url" placeholder="URL da imagem 2">
         <br> <br>
         <input type="text" class="answer" placeholder="Resposta incorreta 3">
-        <input type="text" class="url" placeholder="URL da imagem 3">
+        <input type="url" class="url" placeholder="URL da imagem 3">
       </div>
     `;
 	}
