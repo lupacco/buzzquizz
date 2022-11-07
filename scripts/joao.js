@@ -1,8 +1,14 @@
 let quizzList;
 let position;
+let click = 0;
+let score = 0;
+let a =[];
+let result;
 
 
 function selectQuizz(element){
+    click = 0;
+    score = 0;
     window.scrollTo(0, 0);
     quizzList = document.querySelectorAll(".allQuizzes .quizzes .quizz");
 
@@ -69,7 +75,7 @@ function renderQuestions(){
         //segundo for para procurar as answers dentro de questions
         //for(let j = 0; j <returned.questions[i].answers.length; j++){
         questions.innerHTML += `
-        <div class="question ${i}">
+        <div class="question" id ="${i}">
         <div class="questionTitle" style = "background-color: ${returned.questions[i].color};">
             ${returned.questions[i].title}         
             </div>
@@ -95,10 +101,15 @@ function renderQuestions(){
         `
         }
     }
+    catchQuestions();
 }
 
-function ansClick (element) {
+function catchQuestions(){
+     a = document.querySelectorAll(".question");
+}
 
+
+function ansClick (element) {
     //1. cliclar em uma resposta
     //2. selecionar a div options daquela resposta
     let o = element.parentNode
@@ -119,34 +130,86 @@ function ansClick (element) {
     }
     //5. cancelar todos onclick
     for (let i = 0; i<array.length; i++){
-        array[i].onclick = null;
+        array[i].removeAttribute("onclick", "ansClick(this)");
     }
     //6. scrollar para proxima pergunta apos 2 segundos
-    o.nextElementSibling.scrollIntoView();
 
+    //o.nextElementSibling.scrollIntoView();
+    //7. score
+    if (element.id === "true"){
+        score = score + 1;
+    }
+    click = click + 1;
+    if (click === a.length){
+        renderEnd()
+    }
 }
+
+let values = [];
+function renderEnd(){
+    let endd = document.querySelector(".end");
+    endd.classList.remove("hide");
+    let r = (score / a.length)*100;
+    result = Math.round(r);
+    let renderEndTitle = document.querySelector(".endQuiz .endTitle");
+    let renderEndMessage = document.querySelector(".endQuiz .endmessage");
+    renderEndTitle.innerHTML = "";
+    renderEndMessage.innerHTML = "";
+
+
+    for (let i = 0; i < returned.levels.length; i++){
+        let value = returned.levels[i].minValue;
+        values.push(value);
+    }
+    for(let i = 0; i < values.length ; i++){
+        if( result >= values[i]){
+            renderEndTitle.innerHTML = `
+            <h1>${returned.levels[i].title}</h1>
+            `;
+            renderEndMessage.innerHTML = `
+            <img src="${returned.levels[i].image}">
+            <p>${returned.levels[i].text}</p>
+    
+            `
+    
+        }
+    }
+}
+
 
 function home(){
     let screen1 = document.querySelector(".lucas");
     let screen2 = document.querySelector(".joao");
     let screen3 = document.querySelector(".fabio");
+    let endScreen = document.querySelector(".end");
 
     screen1.classList.remove("hide");
     screen2.classList.add("hide");
-    screen3.classList.add("hide")
+    screen3.classList.add("hide");
+    endScreen.classList.add("hide");
 }
 
 function restart(){
     window.scrollTo(0, 0);
-    let arrayquestions = document.querySelectorAll(".answer");
-    console.log(arrayquestions);
-    for(let i=0; i<arrayquestions[i].length;i++){
-        if(array.questions[i].id === "true"){
-            arrayquestions[i].classList.remove("correctAsw");
-        } else {
-        arrayquestions[i].classList.remove("nonClicked");
-        arrayquestions[i].classList.remove("wrongAsw");
+    let a = document.querySelectorAll(".answer");
+    for(let i = 0; i< a.length; i++){
+    if (a[i].id === "true"){
+        a[i].classList.remove("correctAsw");
+        a[i].classList.remove("nonClicked");
+
+    } else{
+        a[i].classList.remove("wrongAsw");
+        a[i].classList.remove("nonClicked");
 
     }
+
 }
+for(let i = 0 ; i < a.length ; i++){
+    a[i].setAttribute("onclick", "ansClick(this)");
+}
+
+let hide = document.querySelector(".end");
+hide.classList.add("hide");
+click = 0;
+score = 0;
 }

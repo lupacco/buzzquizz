@@ -89,6 +89,8 @@
     font-size: 20px;
     line-height: 23px;
     cursor: pointer;
+    overflow: hidden;
+
 }
 
 .joao .answer img{
@@ -115,6 +117,9 @@
     align-items: center;
 
 }
+.hide{
+    display: none;
+}
 
 .endQuiz{
     width: 759px;
@@ -132,12 +137,15 @@
     display: flex;
     justify-content: center;
     align-items: center;
-
+    overflow: hidden;
+}
+.endTitle h1{
     font-style: normal;
     font-weight: 700;
     font-size: 23px;
     line-height: 27px;
     color: #FFFFFF;
+
 }
 .endmessage{
     display: flex;
@@ -153,6 +161,10 @@
     height: 273px;
     margin-right: 21px;
 
+}
+
+.endmessage p{
+    overflow: hidden;    
 }
 
 .restart{
@@ -187,4 +199,70 @@
     justify-content: center;
     color: #818181;
     cursor: pointer;
+}
+
+@media (max-width: 375px){
+    *{
+        box-sizing: border-box;
+    }
+
+    .quizzTitle h1{
+    font-style: normal;
+    font-weight: 400;
+    font-size: 19px;
+    line-height: 22px;
+    overflow: hidden;
+    }
+    .questions{
+        padding: 18px;
+        padding-left: 18px;
+        padding-right: 18px;
+    }
+    .joao .question{
+        width: 375px;
+        height: 100%;
+        padding: 0px;
+    }
+    .joao .answer{
+        width: 163px;
+        height: 100%;
+        font-weight: 700;
+        font-size: 13px;
+        line-height: 15px;
+        overflow: hidden;
+    }
+    .questionTitle{
+        margin-left: 18px;
+        margin-top: 18px;
+        width: 340px;
+        height: 89px;  
+    }
+    .joao .answer img{
+        width: 163px;
+        height: 113px;
+    }
+
+
+    .endQuiz{
+
+        width: 375px;
+        height: 500px;
+    }
+    .endTitle{
+        width: 340px;
+        height: 99px;
+    }
+    .endmessage img{
+        width: 340px;
+        height: 255px;
+    }
+    .endmessage p{
+        font-size: 17px;
+        line-height: 20px;
+    }
+    .options{
+        margin-left: 18px;
+        margin-right: 18px;
+        width: 340px;
+    }
 }
