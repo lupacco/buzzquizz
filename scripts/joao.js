@@ -37,6 +37,7 @@ let t;
 
 function goodresp(r){
     returned = r.data;
+    console.log('Good response:')
     console.log(returned);
 }
 

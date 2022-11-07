@@ -17,6 +17,9 @@ const levelUrls = [];
 const levelDescription = [];
 const allLevelTitles = document.querySelectorAll('.fabio .level-title');
 
+//Criando objeto de quizz para salvar em local storage
+let quizzToStorage = {}
+
 function openCreateQuizz() {
 	const mainLucas = document.querySelector('.lucas');
 	mainLucas.classList.add('hide');
@@ -40,6 +43,8 @@ function createQuizz() {
 	informations.classList.remove('informations');
 	questions.classList.remove('hide');
 	questions.classList.add('questions');
+	//começarndo a setar variaveis do objeto
+	
 	createQuestions();
 }
 
