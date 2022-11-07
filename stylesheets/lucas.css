@@ -131,6 +131,7 @@ ion-icon{
     display: flex;
     flex-direction: column;
     align-items: flex-end;
+    z-index: 2;
 }
 .quizzOption ion-icon{
     display: block;
