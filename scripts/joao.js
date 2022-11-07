@@ -7,6 +7,8 @@ let result;
 
 
 function selectQuizz(element){
+    click = 0;
+    score = 0;
     window.scrollTo(0, 0);
     quizzList = document.querySelectorAll(".allQuizzes .quizzes .quizz");
 
@@ -128,7 +130,7 @@ function ansClick (element) {
     }
     //5. cancelar todos onclick
     for (let i = 0; i<array.length; i++){
-        array[i].removeAttribute("onclick", "ansClick()");
+        array[i].removeAttribute("onclick", "ansClick(this)");
     }
     //6. scrollar para proxima pergunta apos 2 segundos
 
@@ -161,17 +163,17 @@ function renderEnd(){
     }
     for(let i = 0; i < values.length ; i++){
         if( result >= values[i]){
-            let position = i;
+            renderEndTitle.innerHTML = `
+            <h1>${returned.levels[i].title}</h1>
+            `;
+            renderEndMessage.innerHTML = `
+            <img src="${returned.levels[i].image}">
+            <p>${returned.levels[i].text}</p>
+    
+            `
+    
         }
     }
-        renderEndTitle.innerHTML = `
-        <h1>${returned.levels[position].title}</h1>
-        `;
-        renderEndMessage.innerHTML = `
-        <img src="${returned.levels[position].image}">
-        <p>${returned.levels[position].text}</p>
-
-        `
 }
 
 
@@ -179,10 +181,12 @@ function home(){
     let screen1 = document.querySelector(".lucas");
     let screen2 = document.querySelector(".joao");
     let screen3 = document.querySelector(".fabio");
+    let endScreen = document.querySelector(".end");
 
     screen1.classList.remove("hide");
     screen2.classList.add("hide");
-    screen3.classList.add("hide")
+    screen3.classList.add("hide");
+    endScreen.classList.add("hide");
 }
 
 function restart(){
@@ -201,6 +205,11 @@ function restart(){
 
 }
 for(let i = 0 ; i < a.length ; i++){
-    a[i].setAttribute("onclick", "ansClick()");
+    a[i].setAttribute("onclick", "ansClick(this)");
 }
+
+let hide = document.querySelector(".end");
+hide.classList.add("hide");
+click = 0;
+score = 0;
 }
