@@ -16,9 +16,6 @@ const mainFabio = document.querySelector('.fabio');
 let userQuizzes = [];
 let userQuizzesString;
 
-//Criando objeto de quizz para salvar em local storage
-let quizzToStorage = {}
-
 function openCreateQuizz() {
 	mainLucas.classList.add('hide');
 	mainFabio.classList.remove('hide');
