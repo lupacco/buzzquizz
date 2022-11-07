@@ -211,7 +211,7 @@ function hideButtonCreateQuizz() {
 	const userQuizzes = document.querySelector('.lucas .userQuizzes .quizzes');
 	const userQuizzesButton = document.querySelector('.lucas .userQuizzes');
 	const createQuizzButton = document.querySelector('.lucas .createQuizz');
-	if (userQuizzes.innerHTML !== '') {
+	if (localStorage.length !== 0) {
 		createQuizzButton.classList.add('hide');
 	} else {
 		userQuizzesButton.classList.add('hide');

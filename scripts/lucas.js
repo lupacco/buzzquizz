@@ -20,6 +20,7 @@ function renderUserQuizzes(){
     //Resgata div que contém os quizzes criados pelo usuário
     let userQuizzesDiv = document.querySelector('.userQuizzes .quizzes')
     //Percorre cada objeto-quizz do localStorage
+    if(!localQuizzes) return
     localQuizzes.forEach(quiz => {
         userQuizzesDiv.innerHTML += `
         <div class="quizz" id="${quiz.id}" onclick="selectUserQuizz(this)">
