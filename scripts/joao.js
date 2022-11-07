@@ -1,29 +1,43 @@
-let quizzList;
 let position;
 let click = 0;
 let score = 0;
 let a =[];
 let result;
+let idToBeRendered;
 
+//Mesma lógica da função abaixo só que pra quizzesde usuário
+function selectUserQuizz(element){
+    click = 0;
+    score = 0;
+    window.scrollTo(0, 0);
+    let quizzList = document.querySelectorAll(".userQuizzes .quizzes .quizz");
+
+    for (let i = 0; i<quizzList.length; i++){
+        if(element === quizzList[i]){
+            idToBeRendered = element.id
+        }
+    }
+    catchingId();
+}
 
 function selectQuizz(element){
     click = 0;
     score = 0;
     window.scrollTo(0, 0);
-    quizzList = document.querySelectorAll(".allQuizzes .quizzes .quizz");
+    let quizzList = document.querySelectorAll(".allQuizzes .quizzes .quizz");
 
     for (let i = 0; i<quizzList.length; i++){
         if(element === quizzList[i]){
             position = i;
         }
     }
+    idToBeRendered = Quizz[position].id
     catchingId();
 }
 
 
 function catchingId(){
-    console.log(Quizz[position].id);
-    let promise = axios.get(`https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes/${Quizz[position].id}`);
+    let promise = axios.get(`https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes/${idToBeRendered}`);
     promise.then(r => {
         goodresp(r)
         showScreen2();
@@ -37,6 +51,7 @@ let t;
 
 function goodresp(r){
     returned = r.data;
+    console.log('Good response:')
     console.log(returned);
 }
 
