@@ -5,8 +5,8 @@ let a =[];
 let result;
 let idToBeRendered;
 
+//Mesma lógica da função abaixo só que pra quizzesde usuário
 function selectUserQuizz(element){
-    console.log(element)
     click = 0;
     score = 0;
     window.scrollTo(0, 0);
@@ -21,7 +21,6 @@ function selectUserQuizz(element){
 }
 
 function selectQuizz(element){
-    console.log(element)
     click = 0;
     score = 0;
     window.scrollTo(0, 0);
