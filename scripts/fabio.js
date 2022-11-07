@@ -15,6 +15,7 @@ const mainLucas = document.querySelector('.lucas');
 const mainFabio = document.querySelector('.fabio');
 let userQuizzes = [];
 let userQuizzesString;
+let quizzAtual;
 
 function openCreateQuizz() {
 	mainLucas.classList.add('hide');
@@ -87,22 +88,24 @@ function createLevels() {
 	const allWrongAnswers3 = document.querySelectorAll('.fabio .wrong-answer3');
 	const allQuestionColors = document.querySelectorAll('.fabio .question-color');
 	const allQuestionTitles = document.querySelectorAll('.fabio .question-title');
-	const allQuestionUrlsCorrects = document.querySelectorAll('.fabio .question-url-correct');
-	const allQuestionUrls1 = document.querySelectorAll('.fabio .question-url1')
-	const allQuestionUrls2 = document.querySelectorAll('.fabio .question-url2')
-	const allQuestionUrls3 = document.querySelectorAll('.fabio .question-url3')
+	const allQuestionUrlsCorrects = document.querySelectorAll(
+		'.fabio .question-url-correct'
+	);
+	const allQuestionUrls1 = document.querySelectorAll('.fabio .question-url1');
+	const allQuestionUrls2 = document.querySelectorAll('.fabio .question-url2');
+	const allQuestionUrls3 = document.querySelectorAll('.fabio .question-url3');
 
 	for (let i = 0; i < allCorrectAnswers.length; i++) {
-		const title = allQuestionTitles[i].value
-		const color = allQuestionColors[i].value
-		const correct = allCorrectAnswers[i].value
-		const urlCorrect = allQuestionUrlsCorrects[i].value
-		const wrong1 = allWrongAnswers1[i].value
-		const wrong2 = allWrongAnswers2[i].value
-		const wrong3 = allWrongAnswers3[i].value
-		const url1 = allQuestionUrls1[i].value
-		const url2 = allQuestionUrls2[i].value
-		const url3 = allQuestionUrls3[i].value
+		const title = allQuestionTitles[i].value;
+		const color = allQuestionColors[i].value;
+		const correct = allCorrectAnswers[i].value;
+		const urlCorrect = allQuestionUrlsCorrects[i].value;
+		const wrong1 = allWrongAnswers1[i].value;
+		const wrong2 = allWrongAnswers2[i].value;
+		const wrong3 = allWrongAnswers3[i].value;
+		const url1 = allQuestionUrls1[i].value;
+		const url2 = allQuestionUrls2[i].value;
+		const url3 = allQuestionUrls3[i].value;
 
 		questionStorage.push({
 			title: title,
@@ -119,25 +122,27 @@ function createLevels() {
 					isCorrectAnswer: false,
 				},
 			],
-		},);
+		});
 
-		if (wrong2 !== "" && wrong3 === "") {
+		if (wrong2 !== '' && wrong3 === '') {
 			questionStorage[i].answers.push({
 				text: wrong2,
 				image: url2,
 				isCorrectAnswer: false,
-			})
-		} else if (wrong2 !== "" && wrong3 !== "") {
-			questionStorage[i].answers.push({
-				text: wrong2,
-				image: url2,
-				isCorrectAnswer: false,
-			},
-			{
-				text: wrong3,
-				image: url3,
-				isCorrectAnswer: false,
-			})
+			});
+		} else if (wrong2 !== '' && wrong3 !== '') {
+			questionStorage[i].answers.push(
+				{
+					text: wrong2,
+					image: url2,
+					isCorrectAnswer: false,
+				},
+				{
+					text: wrong3,
+					image: url3,
+					isCorrectAnswer: false,
+				}
+			);
 		}
 	}
 	questions.classList.add('hide');
@@ -171,7 +176,7 @@ function finishQuizz() {
 	const allLevelDescriptions = document.querySelectorAll(
 		'.fabio .level-description'
 	);
-	allLevelTitles = document.querySelectorAll('.fabio .level-title')
+	allLevelTitles = document.querySelectorAll('.fabio .level-title');
 	for (let i = 0; i < allLevelTitles.length; i++) {
 		levelTitles.push(allLevelTitles[i].value);
 		levelMins.push(allLevelMins[i].value);
@@ -239,20 +244,33 @@ function postQuizz() {
 
 	promise.catch((err) => console.log(err));
 	promise.then((res) => {
+		quizzAtual = res.data;
 		if (localStorage.length === 0) {
-			userQuizzes.push(res.data)
-			userQuizzesString = JSON.stringify(userQuizzes)
-			localStorage.setItem('userQuizzes', userQuizzesString)
+			userQuizzes.push(res.data);
+			userQuizzesString = JSON.stringify(userQuizzes);
+			localStorage.setItem('userQuizzes', userQuizzesString);
 		} else {
-			const arrayAux = JSON.parse(localStorage.getItem('userQuizzes'))
-			arrayAux.push(res.data)
-			userQuizzesString = JSON.stringify(arrayAux)
-			localStorage.setItem('userQuizzes', userQuizzesString)
+			const arrayAux = JSON.parse(localStorage.getItem('userQuizzes'));
+			arrayAux.push(res.data);
+			userQuizzesString = JSON.stringify(arrayAux);
+			localStorage.setItem('userQuizzes', userQuizzesString);
 		}
 	});
+}
 
+function accessQuizz() {
+	axios
+		.get(
+			`https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes/${quizzAtual.id}`
+		)
+		.then((r) => {
+			goodresp(r);
+			showScreen2();
+			renderTitle();
+			renderQuestions();
+		});
 }
 
 function backHome() {
-	location.reload(true)
+	location.reload(true);
 }
