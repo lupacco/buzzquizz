@@ -26,6 +26,10 @@ function renderUserQuizzes(){
         <div class="quizz" id="${quiz.id}" onclick="selectUserQuizz(this)">
             <div class="gradient"></div>
             <img src="${quiz.image}" alt="">
+            <div class="quizzOption">
+                <ion-icon name="create-outline"></ion-icon>
+                <ion-icon name="trash-outline"></ion-icon>
+            </div>
             <p>${quiz.title}</p>
         </div>
         `

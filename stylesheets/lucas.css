@@ -120,6 +120,23 @@ ion-icon{
     height: 100%;
     border-radius: 8px;
 }
+.quizzOption{
+    background-color: var(--red);
+    position: absolute;
+    right: 0;
+    top: 24px;
+    border-bottom-left-radius: 8px;
+    border-top-left-radius: 8px;
+    padding: 8px 4px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+.quizzOption ion-icon{
+    display: block;
+    color: #FFFFFF;
+    margin: 4px;
+}
 .quizz p {
     position: absolute;
     max-width: 330px;
