@@ -38,6 +38,8 @@ function createQuizz() {
 	informations.classList.remove('informations');
 	questions.classList.remove('hide');
 	questions.classList.add('questions');
+	//começarndo a setar variaveis do objeto
+	
 	createQuestions();
 }
 
