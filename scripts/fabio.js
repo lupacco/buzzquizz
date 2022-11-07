@@ -6,21 +6,18 @@ const questionStorage = [];
 const levelStorage = [];
 const questions = document.querySelector('.fabio section:nth-child(2)');
 const levels = document.querySelector('.fabio section:nth-child(3)');
-const correctAnswers = [];
-const wrongAnswers = [];
-const questionTitles = [];
-const questionColors = [];
-const questionUrls = [];
 const levelTitles = [];
 const levelMins = [];
 const levelUrls = [];
 const levelDescription = [];
-const allLevelTitles = document.querySelectorAll('.fabio .level-title');
+let allLevelTitles;
+const mainLucas = document.querySelector('.lucas');
+const mainFabio = document.querySelector('.fabio');
+let userQuizzes = [];
+let userQuizzesString;
 
 function openCreateQuizz() {
-	const mainLucas = document.querySelector('.lucas');
 	mainLucas.classList.add('hide');
-	const mainFabio = document.querySelector('.fabio');
 	mainFabio.classList.remove('hide');
 }
 
@@ -57,16 +54,16 @@ function createQuestions() {
         <input type="text" class="question-color" pattern="^#+([a-fA-F0-9]{6}|[a-fA-F0-9]{6})$" required title="começar em #, seguida de 6 caracteres hexadecimais, ou seja, números ou letras de A a F" placeholder="Cor de fundo da pergunta">
         <p>Resposta correta</p>
         <input type="text" class="correct-answer" required placeholder="Resposta correta">
-        <input type="url" class="question-url" required placeholder="URL da imagem">
+        <input type="url" class="question-url-correct" required placeholder="URL da imagem">
         <p>Respostas incorretas</p>
-        <input type="text" class="wrong-answer" required placeholder="Resposta incorreta 1">
-        <input type="url" class="question-url" required placeholder="URL da imagem 1">
+        <input type="text" class="wrong-answer1" required placeholder="Resposta incorreta 1">
+        <input type="url" class="question-url1" required placeholder="URL da imagem 1">
         <br> <br>
-        <input type="text" class="wrong-answer" placeholder="Resposta incorreta 2">
-        <input type="url" class="question-url" placeholder="URL da imagem 2">
+        <input type="text" class="wrong-answer2" placeholder="Resposta incorreta 2">
+        <input type="url" class="question-url2" placeholder="URL da imagem 2">
         <br> <br>
-        <input type="text" class="wrong-answer" placeholder="Resposta incorreta 3">
-        <input type="url" class="question-url" placeholder="URL da imagem 3">
+        <input type="text" class="wrong-answer3" placeholder="Resposta incorreta 3">
+        <input type="url" class="question-url3" placeholder="URL da imagem 3">
       </div>
     `;
 	}
@@ -85,23 +82,62 @@ function expandQuestion(req) {
 
 function createLevels() {
 	const allCorrectAnswers = document.querySelectorAll('.fabio .correct-answer');
-	const allWrongAnswers = document.querySelectorAll('.fabio .wrong-answer');
+	const allWrongAnswers1 = document.querySelectorAll('.fabio .wrong-answer1');
+	const allWrongAnswers2 = document.querySelectorAll('.fabio .wrong-answer2');
+	const allWrongAnswers3 = document.querySelectorAll('.fabio .wrong-answer3');
 	const allQuestionColors = document.querySelectorAll('.fabio .question-color');
 	const allQuestionTitles = document.querySelectorAll('.fabio .question-title');
-	const allQuestionUrls = document.querySelectorAll('.fabio .question-url');
+	const allQuestionUrlsCorrects = document.querySelectorAll('.fabio .question-url-correct');
+	const allQuestionUrls1 = document.querySelectorAll('.fabio .question-url1')
+	const allQuestionUrls2 = document.querySelectorAll('.fabio .question-url2')
+	const allQuestionUrls3 = document.querySelectorAll('.fabio .question-url3')
+
 	for (let i = 0; i < allCorrectAnswers.length; i++) {
-		correctAnswers.push(allCorrectAnswers[i].value);
-		questionTitles.push(allQuestionTitles[i].value);
-		questionColors.push(allQuestionColors[i].value);
-	}
-	for (let i = 0; i < allWrongAnswers.length; i++) {
-		if (allWrongAnswers[i].value !== '') {
-			wrongAnswers.push(allWrongAnswers[i].value);
-		}
-	}
-	for (let i = 0; i < allQuestionUrls.length; i++) {
-		if (allQuestionUrls[i].value !== '') {
-			questionUrls.push(allQuestionUrls[i].value);
+		const title = allQuestionTitles[i].value
+		const color = allQuestionColors[i].value
+		const correct = allCorrectAnswers[i].value
+		const urlCorrect = allQuestionUrlsCorrects[i].value
+		const wrong1 = allWrongAnswers1[i].value
+		const wrong2 = allWrongAnswers2[i].value
+		const wrong3 = allWrongAnswers3[i].value
+		const url1 = allQuestionUrls1[i].value
+		const url2 = allQuestionUrls2[i].value
+		const url3 = allQuestionUrls3[i].value
+
+		questionStorage.push({
+			title: title,
+			color: color,
+			answers: [
+				{
+					text: correct,
+					image: urlCorrect,
+					isCorrectAnswer: true,
+				},
+				{
+					text: wrong1,
+					image: url1,
+					isCorrectAnswer: false,
+				},
+			],
+		},);
+
+		if (wrong2 !== "" && wrong3 === "") {
+			questionStorage[i].answers.push({
+				text: wrong2,
+				image: url2,
+				isCorrectAnswer: false,
+			})
+		} else if (wrong2 !== "" && wrong3 !== "") {
+			questionStorage[i].answers.push({
+				text: wrong2,
+				image: url2,
+				isCorrectAnswer: false,
+			},
+			{
+				text: wrong3,
+				image: url3,
+				isCorrectAnswer: false,
+			})
 		}
 	}
 	questions.classList.add('hide');
@@ -135,6 +171,7 @@ function finishQuizz() {
 	const allLevelDescriptions = document.querySelectorAll(
 		'.fabio .level-description'
 	);
+	allLevelTitles = document.querySelectorAll('.fabio .level-title')
 	for (let i = 0; i < allLevelTitles.length; i++) {
 		levelTitles.push(allLevelTitles[i].value);
 		levelMins.push(allLevelMins[i].value);
@@ -143,8 +180,8 @@ function finishQuizz() {
 	}
 
 	const sucess = document.querySelector('.fabio section:nth-child(4)');
-	// levelObjectCreate();
-	// postQuizz()
+	levelObjectCreate();
+	postQuizz();
 	levels.classList.add('hide');
 	levels.classList.remove('levels');
 	sucess.classList.remove('hide');
@@ -176,76 +213,46 @@ function hideButtonCreateQuizz() {
 
 hideButtonCreateQuizz();
 
-// function levelObjectCreate() {
-// 	for (let i = 0; i < allLevelTitles.length; i++) {
-// 		levelStorage.push({
-// 			title: levelTitles[i],
-// 			image: levelUrls[i],
-// 			text: levelDescription[i],
-// 			minValue: levelMins[i]
-// 		})
-// 	}
-// }
+function levelObjectCreate() {
+	for (let i = 0; i < allLevelTitles.length; i++) {
+		levelStorage.push({
+			title: levelTitles[i],
+			image: levelUrls[i],
+			text: levelDescription[i],
+			minValue: levelMins[i],
+		});
+	}
+}
 
-// function postQuizz() {
-// 	const promise = axios.post(
-// 		'https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes',
-// 		{
-// 			title: inputTitle,
-// 			image: inputImage,
-// 			questions: [
-// 				{
-// 					title: questionTitles[0],
-// 					color: questionColors[0],
-// 					answers: [
-// 						{
-// 							text: correctAnswers[0],
-// 							image: questionUrls[0],
-// 							isCorrectAnswer: true,
-// 						},
-// 						{
-// 							text: wrongAnswers[0],
-// 							image: questionUrls[1],
-// 							isCorrectAnswer: false,
-// 						},
-// 					],
-// 				},
-// 				{
-// 					title: questionTitles[1],
-// 					color: questionColors[1],
-// 					answers: [
-// 						{
-// 							text: correctAnswers[1],
-// 							image: questionUrls[2],
-// 							isCorrectAnswer: true,
-// 						},
-// 						{
-// 							text: wrongAnswers[1],
-// 							image: questionUrls[3],
-// 							isCorrectAnswer: false,
-// 						},
-// 					],
-// 				},
-// 				{
-// 					title: questionTitles[2],
-// 					color: questionColors[2],
-// 					answers: [
-// 						{
-// 							text: correctAnswers[2],
-// 							image: questionUrls[4],
-// 							isCorrectAnswer: true,
-// 						},
-// 						{
-// 							text: wrongAnswers[2],
-// 							image: questionUrls[5],
-// 							isCorrectAnswer: false,
-// 						},
-// 					],
-// 				},
-// 			],
-// 			levels: levelStorage
-// 		}
-// 	);
+function postQuizz() {
+	const objectQuizzCreate = {
+		title: inputTitle,
+		image: inputImage,
+		questions: questionStorage,
+		levels: levelStorage,
+	};
 
-// 	promise.then(() => console.log('Deu certo'))
-// }
+	const promise = axios.post(
+		'https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes',
+		objectQuizzCreate
+	);
+
+	promise.catch((err) => console.log(err));
+	promise.then((res) => {
+		if (localStorage.length === 0) {
+			userQuizzes.push(res.data)
+			userQuizzesString = JSON.stringify(userQuizzes)
+			localStorage.setItem('userQuizzes', userQuizzesString)
+		} else {
+			const arrayAux = JSON.parse(localStorage.getItem('userQuizzes'))
+			arrayAux.push(res.data)
+			userQuizzesString = JSON.stringify(arrayAux)
+			localStorage.setItem('userQuizzes', userQuizzesString)
+		}
+	});
+
+}
+
+function backHome() {
+	location.reload(true)
+}
