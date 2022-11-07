@@ -123,11 +123,18 @@ function catchQuestions(){
      a = document.querySelectorAll(".question");
 }
 
+let o;
+let question;
+let idQue=0;
+
 
 function ansClick (element) {
     //1. cliclar em uma resposta
     //2. selecionar a div options daquela resposta
-    let o = element.parentNode
+    o = element.parentNode
+    console.log(o);
+    question = o.parentNode;
+    console.log(question);
     let array = o.querySelectorAll(".answer");
     //3. acinzentar todas as respostas não escolhida
     for (let i = 0 ; i < array.length; i++){
@@ -147,22 +154,34 @@ function ansClick (element) {
     for (let i = 0; i<array.length; i++){
         array[i].removeAttribute("onclick", "ansClick(this)");
     }
-    //6. scrollar para proxima pergunta apos 2 segundos
-
-    //o.nextElementSibling.scrollIntoView();
-    //7. score
-    if (element.id === "true"){
-        score = score + 1;
-    }
     click = click + 1;
     if (click === a.length){
         renderEnd()
     }
+    //6. scrollar para proxima pergunta apos 2 segundos
+        //if(question !== endd){
+            if(idQue !== a.length){
+        setTimeout(scroll, 2000);
+    idQue ++;
+    } else if (idQue === a.length){
+        setTimeout(scrollEnd, 2000);
+    }
+    //7. score
+    if (element.id === "true"){
+        score = score + 1;
+    }
 }
 
+function scroll(){
+    question.nextElementSibling.scrollIntoView({behavior: "smooth"});
+}
+function scrollEnd(){
+    endd.scrollIntoView({behavior:"smooth"});
+}
 let values = [];
+let endd;
 function renderEnd(){
-    let endd = document.querySelector(".end");
+    endd = document.querySelector(".end");
     endd.classList.remove("hide");
     let r = (score / a.length)*100;
     result = Math.round(r);
