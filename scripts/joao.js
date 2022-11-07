@@ -27,7 +27,6 @@ function catchingId(){
         showScreen2();
         renderTitle();
         renderQuestions();
-        randomAns();
     });
 }
 
@@ -129,9 +128,11 @@ function ansClick (element) {
     }
     //5. cancelar todos onclick
     for (let i = 0; i<array.length; i++){
-        array[i].onclick = null;
+        array[i].removeAttribute("onclick", "ansClick()");
     }
     //6. scrollar para proxima pergunta apos 2 segundos
+
+    //o.nextElementSibling.scrollIntoView();
     //7. score
     if (element.id === "true"){
         score = score + 1;
@@ -144,6 +145,10 @@ function ansClick (element) {
 
 let values = [];
 function renderEnd(){
+    let endd = document.querySelector(".end");
+    endd.classList.remove("hide");
+    let r = (score / a.length)*100;
+    result = Math.round(r);
     let renderEndTitle = document.querySelector(".endQuiz .endTitle");
     let renderEndMessage = document.querySelector(".endQuiz .endmessage");
     renderEndTitle.innerHTML = "";
@@ -167,15 +172,6 @@ function renderEnd(){
         <p>${returned.levels[position].text}</p>
 
         `
-
-
-    let endd = document.querySelector(".end");
-    endd.classList.remove("hide");
-    let r = (score / a.length)*100;
-    result = Math.round(r);
-
-    alert(result);
-
 }
 
 
@@ -204,7 +200,7 @@ function restart(){
     }
 
 }
-
-//voltar onclicks
-
+for(let i = 0 ; i < a.length ; i++){
+    a[i].setAttribute("onclick", "ansClick()");
+}
 }
