@@ -89,6 +89,8 @@
     font-size: 20px;
     line-height: 23px;
     cursor: pointer;
+    overflow: hidden;
+
 }
 
 .joao .answer img{
@@ -135,12 +137,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
-
+}
+.endTitle h1{
     font-style: normal;
     font-weight: 700;
     font-size: 23px;
     line-height: 27px;
     color: #FFFFFF;
+
 }
 .endmessage{
     display: flex;
@@ -156,6 +160,10 @@
     height: 273px;
     margin-right: 21px;
 
+}
+
+.endmessage p{
+    overflow: hidden;    
 }
 
 .restart{

@@ -74,7 +74,7 @@ function renderQuestions(){
         //segundo for para procurar as answers dentro de questions
         //for(let j = 0; j <returned.questions[i].answers.length; j++){
         questions.innerHTML += `
-        <div class="question ${i}">
+        <div class="question" id ="${i}">
         <div class="questionTitle" style = "background-color: ${returned.questions[i].color};">
             ${returned.questions[i].title}         
             </div>
@@ -132,8 +132,6 @@ function ansClick (element) {
         array[i].onclick = null;
     }
     //6. scrollar para proxima pergunta apos 2 segundos
-
-
     //7. score
     if (element.id === "true"){
         score = score + 1;
@@ -144,41 +142,42 @@ function ansClick (element) {
     }
 }
 
+let values = [];
 function renderEnd(){
-    let values = [];
-    for (let i = 0; i < returned.levels.length; i++){
-        let value = returned.levels[i];
-        values.push(value);
-    }
-
     let renderEndTitle = document.querySelector(".endQuiz .endTitle");
     let renderEndMessage = document.querySelector(".endQuiz .endmessage");
-
     renderEndTitle.innerHTML = "";
     renderEndMessage.innerHTML = "";
 
-for (let i = 0; i < returned.levels.length ; i++){
-    if (result > returned.levels[i]){
-        renderEndTitle.innerHTML += `
-        ${returned.levels[i].title}
+
+    for (let i = 0; i < returned.levels.length; i++){
+        let value = returned.levels[i].minValue;
+        values.push(value);
+    }
+    for(let i = 0; i < values.length ; i++){
+        if( result >= values[i]){
+            let position = i;
+        }
+    }
+        renderEndTitle.innerHTML = `
+        <h1>${returned.levels[position].title}</h1>
         `;
-        renderEndMessage.innerHTML += `
-        <img src="${returned.levels[i].image}">
-        <p>${returned.levels[i].text}</p>
+        renderEndMessage.innerHTML = `
+        <img src="${returned.levels[position].image}">
+        <p>${returned.levels[position].text}</p>
 
         `
 
-    }
 
-}
     let endd = document.querySelector(".end");
     endd.classList.remove("hide");
     let r = (score / a.length)*100;
     result = Math.round(r);
 
-
+    alert(result);
 
 }
+
 
 function home(){
     let screen1 = document.querySelector(".lucas");
