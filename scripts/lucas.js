@@ -3,10 +3,6 @@
  *        Driven Turma 9 - Fourth week of the full-stack course
  */ 
 
-function hideCreateDiv(){
-    item = document.querySelector('.createQuizz')
-    item.classList.toggle('hide')
-}
 
 function getQuizzes(){
     axios.get('https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes')
@@ -41,7 +37,7 @@ function renderQuizzes(quizzes){
         <div class="quizz" onclick="selectQuizz(this)">
             <div class="gradient"></div>
             <img src="${quiz.image}" alt="">
-            <p>${quiz.id}</p>
+            <p>${quiz.title}</p>
         </div>
         `
         //trocar quiz.id por quiz.title
