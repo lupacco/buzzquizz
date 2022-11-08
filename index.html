@@ -32,30 +32,16 @@
                     </p>
                 </h2>
                 <div class="quizzes">
-                    <div class="quizz">
+                    
+                    <!-- <div class="quizz">
                         <img src="images/Rectangle 34.png" alt="">
+                        <div class="quizzOption">
+                            <ion-icon name="create-outline"></ion-icon>
+                            <ion-icon name="trash-outline"></ion-icon>
+                        </div>
                         <p>Acerte os personagens corretos dos Simpsons e prove seu amor!</p>
-                    </div>
-                    <div class="quizz">
-                        <img src="images/Rectangle 36.png" alt="">
-                        <p> O quanto você é de boas?</p>
-                    </div>
-                    <div class="quizz">
-                        <img src="images/Rectangle 34.png" alt="">
-                        <p>Acerte os personagens corretos dos Simpsons e prove seu amor!</p>
-                    </div>
-                    <div class="quizz">
-                        <img src="images/Rectangle 34.png" alt="">
-                        <p>Acerte os personagens corretos dos Simpsons e prove seu amor!</p>
-                    </div>
-                    <div class="quizz">
-                        <img src="images/Rectangle 36.png" alt="">
-                        <p> O quanto você é de boas?</p>
-                    </div>
-                    <div class="quizz">
-                        <img src="images/Rectangle 34.png" alt="">
-                        <p>Acerte os personagens corretos dos Simpsons e prove seu amor!</p>
-                    </div>
+                    </div> -->
+                    
                 </div>
             </section>
             <section class="allQuizzes">
@@ -65,22 +51,6 @@
                     <div class="quizz">
                         <img src="images/Rectangle 36.png" alt="">
                         <p> O quanto você é de boas?</p>
-                    </div>
-                    <div class="quizz">
-                        <img src="images/Rectangle 34.png" alt="">
-                        <p>Acerte os personagens corretos dos Simpsons e prove seu amor!</p>
-                    </div>
-                    <div class="quizz">
-                        <img src="images/Rectangle 34.png" alt="">
-                        <p>Acerte os personagens corretos dos Simpsons e prove seu amor!</p>
-                    </div>
-                    <div class="quizz">
-                        <img src="images/Rectangle 36.png" alt="">
-                        <p> O quanto você é de boas?</p>
-                    </div>
-                    <div class="quizz">
-                        <img src="images/Rectangle 34.png" alt="">
-                        <p>Acerte os personagens corretos dos Simpsons e prove seu amor!</p>
                     </div>
                      -->
                 </div>
@@ -123,10 +93,10 @@
                         <p>Nivel 1</p>
                         <ion-icon onclick="expandQuestion(this)" name="create-outline"></ion-icon>
                     </div>
-                    <input type="text" minlength="10" required title="minimo de 10 letras" placeholder="Título do nível">
-                    <input type="number" min="0" max="0" required title="esse precisa ser 0%" placeholder="% de acerto mínima">
-                    <input type="url" required placeholder="URL da imagem do nível">
-                    <input type="text" minlength="30" required title="minimo de 30 letras" placeholder="Descrição do nível">
+                    <input type="text" class="level-title" minlength="10" required title="minimo de 10 letras" placeholder="Título do nível">
+                    <input type="number" class="level-min" min="0" max="0" required title="esse precisa ser 0%" placeholder="% de acerto mínima">
+                    <input type="url" class="level-url" required placeholder="URL da imagem do nível">
+                    <input type="text" class="level-description" minlength="30" required title="minimo de 30 letras" placeholder="Descrição do nível">
                 </div>
             </div>
             <input type="submit" class="button-create" value="Finalizar Quizz">
@@ -139,7 +109,7 @@
             <div class="sucess-box">
                 
             </div>
-            <button onclick="acessQuizz()">Acessar Quizz</button>
+            <button onclick="accessQuizz()">Acessar Quizz</button>
             <h2 onclick="backHome()">voltar pra home</h2>
         </section>
     </main>
@@ -152,43 +122,15 @@
             </div>
         <div class="questions">
             <!--start of a question-->
-            <div class="question">
-                <div class="questionTitle">
-                    Em qual animal Olho-Tonto Moody transfigurou Malfoy?
-                </div>
-                <div class="options">
-                    <div class="answer">
-                        <img src="images/image 4.png">
-                        <h1>Ratata</h1>
-                    </div>
-
-                    <div class="answer">
-                        <img src="images/image 4.png">
-                        <h1>Ratata</h1>
-                    </div>
-
-                    <div class="answer">
-                        <img src="images/image 4.png">
-                        <h1>Ratata</h1>
-                    </div>
-
-                    <div class="answer">
-                        <img src="images/image 4.png">
-                        <h1>Ratata</h1>
-                    </div>
-
-                </div>
-            </div>
             <!--question end-->    
         </div>
-       <div class="end">
+       <div class="end hide">
             <div class="endQuiz">
                 <div class="endTitle">
-                    88% de acerto: Você é praticamente um aluno de Hogwarts!
+                    
                 </div>
                 <div class="endmessage">
-                    <img src="./images/image 10.png">
-                    <p>Parabéns Potterhead! Bem-vindx a Hogwarts, aproveite o loop infinito de comida e clique no botão abaixo para usar o vira-tempo e reiniciar este teste.</p>
+                    
                 </div>
             </div>
             <div class="buttons">

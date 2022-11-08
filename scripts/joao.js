@@ -1,33 +1,48 @@
-let quizzList;
 let position;
 let click = 0;
 let score = 0;
 let a =[];
 let result;
+let idToBeRendered;
 
+//Mesma lógica da função abaixo só que pra quizzesde usuário
+function selectUserQuizz(element){
+    click = 0;
+    score = 0;
+    window.scrollTo(0, 0);
+    let quizzList = document.querySelectorAll(".userQuizzes .quizzes .quizz");
+
+    for (let i = 0; i<quizzList.length; i++){
+        if(element === quizzList[i]){
+            idToBeRendered = element.id
+        }
+    }
+    catchingId();
+}
 
 function selectQuizz(element){
+    click = 0;
+    score = 0;
     window.scrollTo(0, 0);
-    quizzList = document.querySelectorAll(".allQuizzes .quizzes .quizz");
+    let quizzList = document.querySelectorAll(".allQuizzes .quizzes .quizz");
 
     for (let i = 0; i<quizzList.length; i++){
         if(element === quizzList[i]){
             position = i;
         }
     }
+    idToBeRendered = Quizz[position].id
     catchingId();
 }
 
 
 function catchingId(){
-    console.log(Quizz[position].id);
-    let promise = axios.get(`https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes/${Quizz[position].id}`);
+    let promise = axios.get(`https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes/${idToBeRendered}`);
     promise.then(r => {
         goodresp(r)
         showScreen2();
         renderTitle();
         renderQuestions();
-        randomAns();
     });
 }
 
@@ -36,6 +51,7 @@ let t;
 
 function goodresp(r){
     returned = r.data;
+    console.log('Good response:')
     console.log(returned);
 }
 
@@ -74,7 +90,7 @@ function renderQuestions(){
         //segundo for para procurar as answers dentro de questions
         //for(let j = 0; j <returned.questions[i].answers.length; j++){
         questions.innerHTML += `
-        <div class="question ${i}">
+        <div class="question" id ="${i}">
         <div class="questionTitle" style = "background-color: ${returned.questions[i].color};">
             ${returned.questions[i].title}         
             </div>
@@ -107,11 +123,18 @@ function catchQuestions(){
      a = document.querySelectorAll(".question");
 }
 
+let o;
+let question;
+let idQue=0;
+
 
 function ansClick (element) {
     //1. cliclar em uma resposta
     //2. selecionar a div options daquela resposta
-    let o = element.parentNode
+    o = element.parentNode
+    console.log(o);
+    question = o.parentNode;
+    console.log(question);
     let array = o.querySelectorAll(".answer");
     //3. acinzentar todas as respostas não escolhida
     for (let i = 0 ; i < array.length; i++){
@@ -129,65 +152,75 @@ function ansClick (element) {
     }
     //5. cancelar todos onclick
     for (let i = 0; i<array.length; i++){
-        array[i].onclick = null;
-    }
-    //6. scrollar para proxima pergunta apos 2 segundos
-
-
-    //7. score
-    if (element.id === "true"){
-        score = score + 1;
+        array[i].removeAttribute("onclick", "ansClick(this)");
     }
     click = click + 1;
     if (click === a.length){
         renderEnd()
     }
+    //6. scrollar para proxima pergunta apos 2 segundos
+        //if(question !== endd){
+            if(idQue !== a.length){
+        setTimeout(scroll, 2000);
+    idQue ++;
+    } else if (idQue === a.length){
+        setTimeout(scrollEnd, 2000);
+    }
+    //7. score
+    if (element.id === "true"){
+        score = score + 1;
+    }
 }
 
+function scroll(){
+    question.nextElementSibling.scrollIntoView({behavior: "smooth"});
+}
+function scrollEnd(){
+    endd.scrollIntoView({behavior:"smooth"});
+}
+let values = [];
+let endd;
 function renderEnd(){
-    let values = [];
-    for (let i = 0; i < returned.levels.length; i++){
-        let value = returned.levels[i];
-        values.push(value);
-    }
-
-    let renderEndTitle = document.querySelector(".endQuiz .endTitle");
-    let renderEndMessage = document.querySelector(".endQuiz .endmessage");
-
-    renderEndTitle.innerHTML = "";
-    renderEndMessage.innerHTML = "";
-
-for (let i = 0; i < returned.levels.length ; i++){
-    if (result > returned.levels[i]){
-        renderEndTitle.innerHTML += `
-        ${returned.levels[i].title}
-        `;
-        renderEndMessage.innerHTML += `
-        <img src="${returned.levels[i].image}">
-        <p>${returned.levels[i].text}</p>
-
-        `
-
-    }
-
-}
-    let endd = document.querySelector(".end");
+    endd = document.querySelector(".end");
     endd.classList.remove("hide");
     let r = (score / a.length)*100;
     result = Math.round(r);
+    let renderEndTitle = document.querySelector(".endQuiz .endTitle");
+    let renderEndMessage = document.querySelector(".endQuiz .endmessage");
+    renderEndTitle.innerHTML = "";
+    renderEndMessage.innerHTML = "";
 
 
-
+    for (let i = 0; i < returned.levels.length; i++){
+        let value = returned.levels[i].minValue;
+        values.push(value);
+    }
+    for(let i = 0; i < values.length ; i++){
+        if( result >= values[i]){
+            renderEndTitle.innerHTML = `
+            <h1>${returned.levels[i].title}</h1>
+            `;
+            renderEndMessage.innerHTML = `
+            <img src="${returned.levels[i].image}">
+            <p>${returned.levels[i].text}</p>
+    
+            `
+    
+        }
+    }
 }
+
 
 function home(){
     let screen1 = document.querySelector(".lucas");
     let screen2 = document.querySelector(".joao");
     let screen3 = document.querySelector(".fabio");
+    let endScreen = document.querySelector(".end");
 
     screen1.classList.remove("hide");
     screen2.classList.add("hide");
-    screen3.classList.add("hide")
+    screen3.classList.add("hide");
+    endScreen.classList.add("hide");
 }
 
 function restart(){
@@ -205,7 +238,12 @@ function restart(){
     }
 
 }
+for(let i = 0 ; i < a.length ; i++){
+    a[i].setAttribute("onclick", "ansClick(this)");
+}
 
-//voltar onclicks
-
+let hide = document.querySelector(".end");
+hide.classList.add("hide");
+click = 0;
+score = 0;
 }
