@@ -12,7 +12,7 @@
 </head>
 <body>
     <header>BuzzQuizz</header>
-    <main class="lucas">
+    <main class="mainPage">
         <div class="createQuizz">
             <p>
                 Você não criou nenhum quizz ainda :(
@@ -22,7 +22,7 @@
             </button>
         </div>
         <div>
-            <section class="userQuizzes">
+            <section class="userQuizzes hide">
                 <h2>
                     <p>Seus Quizzes</p>
                     <p>
@@ -58,19 +58,18 @@
         </div>
     </main>
 
-    <main class="fabio hide">
+    <main class="createQuizzPage hide">
         <section class="informations">
             <h1>Comece pelo começo</h1>
-            <form action="javascript: createQuizz();">
-                <div class="quizz-information">
-                    <input type="text" minlength="20" maxlength="65" required title="Digite entre 20 e 65" placeholder="Título do seu quizz">
-                    <input type="url" required title="Digite uma URL válida" placeholder="URL da imagem do seu quizz">
-                    <input type="number" min="3" required title="Digite um número igual ou maior que 3" placeholder="Quantidade de perguntas do quizz">
-                    <input type="number" min="2" required title="Digite um número igual ou maior que 2" placeholder="Quantidade de níveis do quizz">
-                </div>
-                <input class="button-create" type="submit" value="Prosseguir pra criar perguntas">
-                <!-- <button onclick="createQuizz()">Prosseguir pra criar perguntas</button> -->
-            </form>
+                <form action="javascript:createQuizz()">
+                    <div class="quizz-information">
+                        <input type="text" minlength="20" maxlength="65" required title="Digite entre 20 e 65" placeholder="Título do seu quizz">
+                        <input type="url" required title="Digite uma URL válida" placeholder="URL da imagem do seu quizz">
+                        <input type="number" min="1" required title="Digite um número igual ou maior que 0" placeholder="Quantidade de perguntas do quizz">
+                        <input type="number" min="1" required title="Digite um número igual ou maior que 0" placeholder="Quantidade de níveis do quizz">
+                    </div>
+                    <button type="submit" class="button-create">Prosseguir pra criar perguntas</button>
+                </form>
         </section>
 
         <section class="hide">

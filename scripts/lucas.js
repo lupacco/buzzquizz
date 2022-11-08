@@ -2,24 +2,24 @@
  * @brief Buzz Quizz - Lucas Pagotto C. Oliveira - 23/10/22
  *        Driven Turma 9 - Fourth week of the full-stack course
  */ 
-
-<<<<<<< HEAD
-
-=======
->>>>>>> 9d6ee9949bbb3f8f453290e292f7853bb0b715d2
+let testQuizz;
 function getQuizzes(){
     axios.get('https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes')
     .then(quizzes => {
+        testQuizz = quizzes.data
         renderUserQuizzes(quizzes.data)
         renderQuizzes(quizzes.data)
+        // console.log(testQuizz[0])
+        // let testString = JSON.stringify(testQuizz[0])
+        // localStorage.setItem('userQuizzes', testString)
     })
 }
 let Quizz;
 //Renderiza quizzes do usuário
 function renderUserQuizzes(){
-    if(localStorage.getItem('userQuizzes') != null){
-        //Resgata objetos salvos em localstorage em formato de string e transforma em JSON
-        let localQuizzes = JSON.parse(localStorage.getItem('userQuizzes'))
+    //Resgata objetos salvos em localstorage em formato de string e transforma em JSON
+    let localQuizzes = JSON.parse(localStorage.getItem('userQuizzes'))
+    if(localQuizzes != null && localQuizzes.length > 0){
         //Resgata div que contém os quizzes criados pelo usuário
         let userQuizzesDiv = document.querySelector('.userQuizzes .quizzes')
         //Percorre cada objeto-quizz do localStorage
@@ -65,15 +65,9 @@ function renderQuizzes(quizzes){
     quizzes.forEach(quiz => {
         allQuizzes.innerHTML += `
         <div class="quizz" onclick="selectQuizz(this)">
-<<<<<<< HEAD
             <div class="gradient"></div>
             <img src="${quiz.image}" alt="">
             <p>${quiz.title}</p>
-=======
-        <div class="gradient"></div>
-        <img src="${quiz.image}" alt="">
-        <p>${quiz.title}</p>
->>>>>>> 9d6ee9949bbb3f8f453290e292f7853bb0b715d2
         </div>
         `
     });

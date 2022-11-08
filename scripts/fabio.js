@@ -4,47 +4,47 @@ let inputNumberOfQuestions;
 let inputNumberOfLevels;
 const questionStorage = [];
 const levelStorage = [];
-const questions = document.querySelector('.fabio section:nth-child(2)');
-const levels = document.querySelector('.fabio section:nth-child(3)');
+const questions = document.querySelector('.createQuizzPage section:nth-child(2)');
+const levels = document.querySelector('.createQuizzPage section:nth-child(3)');
 const levelTitles = [];
 const levelMins = [];
 const levelUrls = [];
 const levelDescription = [];
 let allLevelTitles;
-const mainLucas = document.querySelector('.lucas');
-const mainFabio = document.querySelector('.fabio');
 let userQuizzes = [];
 let userQuizzesString;
 let quizzAtual;
 
 function openCreateQuizz() {
-	mainLucas.classList.add('hide');
-	mainFabio.classList.remove('hide');
+	let mainPage = document.querySelector('.mainPage');
+	let createQuizzPage = document.querySelector('.createQuizzPage');
+	mainPage.classList.add('hide');
+	createQuizzPage.classList.remove('hide');
 }
 
 function createQuizz() {
-	const informations = document.querySelector('.fabio section');
-	inputTitle = document.querySelector('.fabio .quizz-information input').value;
-	inputImage = document.querySelector(
-		'.fabio .quizz-information input:nth-child(2)'
-	).value;
-	inputNumberOfQuestions = Number(
-		document.querySelector('.fabio .quizz-information input:nth-child(3)').value
-	);
-	inputNumberOfLevels = Number(
-		document.querySelector('.fabio .quizz-information input:nth-child(4)').value
-	);
-	informations.classList.add('hide');
-	informations.classList.remove('informations');
-	questions.classList.remove('hide');
-	questions.classList.add('questions');
-	//começarndo a setar variaveis do objeto
+	console.log("alohaaaaa")
+	// let infosSection = document.querySelector('.createQuizzPage section');
+	// inputTitle = document.querySelector('.createQuizzPage .quizz-information input').value;
+	// inputImage = document.querySelector(
+	// 	'.createQuizzPage .quizz-information input:nth-child(2)'
+	// ).value;
+	// inputNumberOfQuestions = Number(
+	// 	document.querySelector('.createQuizzPage .quizz-information input:nth-child(3)').value
+	// );
+	// inputNumberOfLevels = Number(
+	// 	document.querySelector('.createQuizzPage .quizz-information input:nth-child(4)').value
+	// );
+	// infosSection.classList.add('hide');
+	// infosSection.classList.remove('informations');
+	// questions.classList.remove('hide');
+	// questions.classList.add('questions');
 	
-	createQuestions();
+	// createQuestions();
 }
 
 function createQuestions() {
-	let boxQuestions = document.querySelector('.fabio .question-box');
+	let boxQuestions = document.querySelector('.createQuizzPage .question-box');
 
 	for (let i = 0; i < inputNumberOfQuestions; i++) {
 		boxQuestions.innerHTML += `
@@ -84,18 +84,18 @@ function expandQuestion(req) {
 }
 
 function createLevels() {
-	const allCorrectAnswers = document.querySelectorAll('.fabio .correct-answer');
-	const allWrongAnswers1 = document.querySelectorAll('.fabio .wrong-answer1');
-	const allWrongAnswers2 = document.querySelectorAll('.fabio .wrong-answer2');
-	const allWrongAnswers3 = document.querySelectorAll('.fabio .wrong-answer3');
-	const allQuestionColors = document.querySelectorAll('.fabio .question-color');
-	const allQuestionTitles = document.querySelectorAll('.fabio .question-title');
+	const allCorrectAnswers = document.querySelectorAll('.createQuizzPage .correct-answer');
+	const allWrongAnswers1 = document.querySelectorAll('.createQuizzPage .wrong-answer1');
+	const allWrongAnswers2 = document.querySelectorAll('.createQuizzPage .wrong-answer2');
+	const allWrongAnswers3 = document.querySelectorAll('.createQuizzPage .wrong-answer3');
+	const allQuestionColors = document.querySelectorAll('.createQuizzPage .question-color');
+	const allQuestionTitles = document.querySelectorAll('.createQuizzPage .question-title');
 	const allQuestionUrlsCorrects = document.querySelectorAll(
-		'.fabio .question-url-correct'
+		'.createQuizzPage .question-url-correct'
 	);
-	const allQuestionUrls1 = document.querySelectorAll('.fabio .question-url1');
-	const allQuestionUrls2 = document.querySelectorAll('.fabio .question-url2');
-	const allQuestionUrls3 = document.querySelectorAll('.fabio .question-url3');
+	const allQuestionUrls1 = document.querySelectorAll('.createQuizzPage .question-url1');
+	const allQuestionUrls2 = document.querySelectorAll('.createQuizzPage .question-url2');
+	const allQuestionUrls3 = document.querySelectorAll('.createQuizzPage .question-url3');
 
 	for (let i = 0; i < allCorrectAnswers.length; i++) {
 		const title = allQuestionTitles[i].value;
@@ -155,7 +155,7 @@ function createLevels() {
 }
 
 function renderLevels() {
-	const boxLevels = document.querySelector('.fabio .level-box');
+	const boxLevels = document.querySelector('.createQuizzPage .level-box');
 	for (let i = 1; i < inputNumberOfLevels; i++) {
 		boxLevels.innerHTML += `
       <div class="level">
@@ -173,12 +173,12 @@ function renderLevels() {
 }
 
 function finishQuizz() {
-	const allLevelMins = document.querySelectorAll('.fabio .level-min');
-	const allLevelUrls = document.querySelectorAll('.fabio .level-url');
+	const allLevelMins = document.querySelectorAll('.createQuizzPage .level-min');
+	const allLevelUrls = document.querySelectorAll('.createQuizzPage .level-url');
 	const allLevelDescriptions = document.querySelectorAll(
-		'.fabio .level-description'
+		'.createQuizzPage .level-description'
 	);
-	allLevelTitles = document.querySelectorAll('.fabio .level-title');
+	allLevelTitles = document.querySelectorAll('.createQuizzPage .level-title');
 	for (let i = 0; i < allLevelTitles.length; i++) {
 		levelTitles.push(allLevelTitles[i].value);
 		levelMins.push(allLevelMins[i].value);
@@ -186,7 +186,7 @@ function finishQuizz() {
 		levelDescription.push(allLevelDescriptions[i].value);
 	}
 
-	const sucess = document.querySelector('.fabio section:nth-child(4)');
+	const sucess = document.querySelector('.createQuizzPage section:nth-child(4)');
 	levelObjectCreate();
 	postQuizz();
 	levels.classList.add('hide');
@@ -197,7 +197,7 @@ function finishQuizz() {
 }
 
 function renderSucess() {
-	const boxSucess = document.querySelector('.fabio .sucess-box');
+	const boxSucess = document.querySelector('.createQuizzPage .sucess-box');
 	boxSucess.innerHTML = `
     <div class="quizz">
       <div class="gradient"></div>
@@ -208,9 +208,9 @@ function renderSucess() {
 }
 
 function hideButtonCreateQuizz() {
-	const userQuizzes = document.querySelector('.lucas .userQuizzes .quizzes');
-	const userQuizzesButton = document.querySelector('.lucas .userQuizzes');
-	const createQuizzButton = document.querySelector('.lucas .createQuizz');
+	let userQuizzes = document.querySelector('.mainPage .userQuizzes .quizzes');
+	let userQuizzesButton = document.querySelector('.mainPage .userQuizzes');
+	let createQuizzButton = document.querySelector('.mainPage .createQuizz');
 	if (localStorage.length !== 0) {
 		createQuizzButton.classList.add('hide');
 	} else {
@@ -218,7 +218,6 @@ function hideButtonCreateQuizz() {
 	}
 }
 
-hideButtonCreateQuizz();
 
 function levelObjectCreate() {
 	for (let i = 0; i < allLevelTitles.length; i++) {

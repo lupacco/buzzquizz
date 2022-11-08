@@ -1,4 +1,4 @@
-.fabio .informations, .fabio .levels, .fabio .sucess {
+.createQuizzPage .informations, .createQuizzPage .levels, .createQuizzPage .sucess {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -60,7 +60,7 @@
 }
 
 
-.fabio .questions {
+.createQuizzPage .questions {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -116,7 +116,7 @@
   width: 100%;
 }
 
-.fabio .level.selected {
+.createQuizzPage .level.selected {
   height: 316px;
 }
 
@@ -124,18 +124,18 @@
   margin-bottom: 14px;
 }
 
-.fabio .quizz {
+.createQuizzPage .quizz {
   width: 500px;
   height: 266px;
 }
 
-.fabio .sucess button {
+.createQuizzPage .sucess button {
   width: 220px;
   border-radius: 15px;
   margin-top: 45px;
 }
 
-.fabio .sucess h2 {
+.createQuizzPage .sucess h2 {
   font-size: 21px;
   font-weight: 400;
   color: #818181;
@@ -144,7 +144,7 @@
   cursor: pointer;
 }
 
-.fabio .quizz p {
+.createQuizzPage .quizz p {
   left: 23px;
   bottom: 18px;
   font-size: 23px;
@@ -171,24 +171,24 @@ form {
     width: 100%;
   }
 
-  .fabio .informations, .fabio .levels, .fabio .sucess, .fabio .questions, .fabio {
+  .createQuizzPage .informations, .createQuizzPage .levels, .createQuizzPage .sucess, .createQuizzPage .questions, .createQuizzPage {
     width: 100%;
     padding: 0;
   }
 
-  .button-create, .fabio button {
+  .button-create, .createQuizzPage button {
     width: 90%;
     margin-top: 29px;
   }
 
-  .fabio .sucess-box {
+  .createQuizzPage .sucess-box {
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
   }
 
-  .fabio .sucess-box .quizz {
+  .createQuizzPage .sucess-box .quizz {
     width: 90%;
     height: 181px;
   }
